@@ -1,0 +1,27 @@
+html {
+    padding: 5px;
+}
+h1 {
+    text-align: center;
+    padding: 10px;
+}
+h3 {
+    color: white;
+}
+div {
+    text-align: center;
+    background-color: dimgrey;
+    padding: 20px;
+}
+a {
+    background-color: deepskyblue;
+    padding: 10px;
+    color: #fff;
+}
+a:hover {
+    background-color: aqua;
+    border: 2px;
+    border-left: #fff;
+    border-top: #fff;
+    border-style: solid;
+}

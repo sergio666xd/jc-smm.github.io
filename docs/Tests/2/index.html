@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../styles/2.css">
+    <title>Página de contacto</title>
+</head>
+<body>
+    <h1> Página de contacto</h1>
+    <section id="contacto">
+        <a href="#tabla">Ir a la tabla de contacto</a>
+        <div class="cf">
+            <form action="" id="contactform">
+                <h3>Formulario de contacto</h3>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Ingresa tu Nombre" required>
+                <hr>
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" name="email" id="email" placeholder="Ingresa tu Correo electrónico" required>
+                <hr>
+                <label for="tel">Celular:</label>
+                <input type="tel" name="tel" id="tel" placeholder="Ingresa un número de teléfono">
+                <hr>
+                <label for="method" class="m">Método preferido de contacto:</label>
+                <br>
+                <input type="radio" name="method" id="remail">
+                <label for="remail" class="e">E-mail</label>&nbsp; &nbsp;
+                <input type="radio" name="method" id="rtel">
+                <label for="rtel" class="t">Teléfono</label>
+                <hr>
+                <label for="text">Descripción:</label>
+                <textarea name="text" id="text" rows="8" placeholder="Describe el motivo de contacto" required></textarea>
+                <hr>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+    <br>
+    <section id="tabla">
+        <a href="#contacto">Ir a la tabla de contacto</a>
+        <h3>Tabla de contactos de contacto</h3>
+        <div class="table">
+            <table>
+                <caption>Tabla de contactos de contacto</caption>
+                <thead>
+                    <tr>
+                        <th>Nombre de Oficina</th>
+                        <th class="c">E-mail</th>
+                        <th>Teléfono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Oficina 1</td>
+                        <td>email1@example.com</td>
+                        <td>1111111</td>
+                    </tr>
+                    <tr>
+                        <td>Oficina 2</td>
+                        <td>email2@example.com</td>
+                        <td>2222222</td>
+                    </tr>
+                    <tr>
+                        <td>Oficina 3</td>
+                        <td>email3@example.com</td>
+                        <td>3333333</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>
