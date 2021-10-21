@@ -1,0 +1,31 @@
+html {
+    padding: 5px;
+}
+h1 {
+    padding: 10px;
+}
+h3 {
+    color: white;
+}
+div {
+    background-color: dimgrey;
+    padding: 20px;
+    width: 400px;
+}
+a {
+    background-color: deepskyblue;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    text-align: center;
+    color: #fff;
+}
+a:hover {
+    background-color: aqua;
+    border: 2px solid;
+    border-left: #fff;
+    border-top: #fff;
+}
+div a {
+    display:block;
+}

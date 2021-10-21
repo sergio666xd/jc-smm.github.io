@@ -1,0 +1,88 @@
+html {
+    padding: 5px;
+}
+div.head {
+    background-color: rgb(248, 151, 41);
+    padding: 10px;
+    height: 100px;
+}
+nav {
+    display: inline;
+    float: right;
+    margin: 26px 50px;
+}
+.content {
+    padding: 10px;
+}
+nav a {
+    background-color: rgb(104, 104, 104);
+    padding: 10px;
+    margin: 10px;
+    color: #fff;
+}
+nav a:hover {
+    background-color: rgb(255, 0, 0);
+    border: 2px solid;
+    border-left: #fff;
+    border-top: #fff;
+    text-decoration: none;
+    color: #fff;
+}
+img.logo {
+    height: 80px;
+    margin-left: 50px;
+}
+section.content img {
+    width: 600px;
+    height: 350px;
+}
+a.mail {
+    background-color: rgb(104, 104, 104);
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    color: #fff;
+}
+a.mail:hover {
+    background-color: rgb(4, 142, 255);
+    border: 2px solid;
+    border-left: #fff;
+    border-top: #fff;
+    text-decoration: none;
+}
+a.wpp {
+    background-color: #128c7e;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    color: #fff;
+}
+a.wpp:hover {
+    background-color: #25d366;
+    border: 2px solid;
+    border-left: #fff;
+    border-top: #fff;
+    text-decoration: none;
+}
+a.tel {
+    background-color: #00d9ff;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    color: #000;
+}
+a.tel:hover {
+    background-color: #008cff;
+    border: 2px solid;
+    border-left: #fff;
+    border-top: #fff;
+    text-decoration: none;
+    color: #fff;
+}
+li h5 {
+    margin-left: 16px;
+}
+iframe {
+    width: 100%;
+    height: 122px;
+}

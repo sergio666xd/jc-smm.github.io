@@ -1,114 +1,114 @@
-<!DOCTYPE html>
-<html lang="es-CO">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-	<script src="../../scripts/form.js"></script>
-    <link rel="stylesheet" href="../styles/global.css">
-    <link rel="stylesheet" href="../styles/location.css">
-    <title>Ubicación CSS</title>
-	<style>
-		p.emb { font-size: 30px; }
-	</style>
-</head>
-<body>
-    <h1>Ubicación CSS </h1> 
-    <a href="../.." class="index"> Volver a inicio</a>
-    <br>
-    <br>
-    <div class="block">
-        <p>CSS se puede escribir de 3 formas distintas:</p>
-        <ol>
-			<div class="block">
-				<li>
-					<h4>En línea:</h4>
-					<p>Escribir los estilos CSS dentro de la etiqueta por medio del atributo <code>style=""</code>, pero solo aplica para la etiqueta que lo contenga. Ejemplo:</p>
-					<div class="code">
-						Sin estilo &rarr; &lt;<code>p</code>&gt; Texto &lt;/<code>p</code>&gt;
-						<br>
-						Con estilo &rarr;&lt;<code>p</code> <code class="a">style</code>=<code class="c">"font-size: 20px;"</code>&gt; Texto &lt;/<code>p</code>&gt;
-					</div>
-					<p> Texto </p>
-					<p style="font-size: 20px;"> Texto </p>
-				</li>
-			</div>
-			<div class="block">
-				<li>
-					<h4>Embebidos:</h4>
-					<p>Escribir los estilos CSS del documento en general incrustados en el código HTML con la etiqueta &lt;<code>style</code>&gt;, encontrada comúnmente en la cabecera (head). Ejemplo:</p>
-					<div class="code">
-						&lt;!<code>DOCTYPE</code> <code class="a">html</code>&gt;<br>
-						&lt;<code>html</code> <code class="a">lang</code>=<code class="c">"en"</code>&gt;<br>
-						&lt;<code>head</code>&gt;<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>meta</code> <code class="a">charset</code>=<code class="c">"UTF-8"</code>&gt;<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>meta</code> <code class="a">http-equiv</code>=<code class="c">"X-UA-Compatible"</code> <code class="a">content</code>=<code class="c">"IE=edge"</code>&gt;<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>meta</code> <code class="a">name</code>=<code class="c">"viewport"</code> <code class="a">content</code>=<code class="c">"width=device-width, initial-scale=1.0"</code>&gt;<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>title</code>&gt;Document&lt;/<code>title</code>&gt;<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>style</code>&gt;<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>p</code><code class="a">.emb</code> { <code class="b">font-size</code>: <code class="m">30</code><code>px</code>; }<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<code>style</code>&gt;<br>
-						&lt;/<code>head</code>&gt;<br>
-						&lt;<code>body</code>><br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>p</code> <code class="a">class</code>=<code class="c">"emb"</code>&gt; Texto &lt;/<code>p</code>&gt;<br>
-						&lt;/<code>body</code>&gt;<br>
-						&lt;/<code>html</code>&gt;<br>
-					</div>
-					<p class="emb"> Texto </p>
-				</li>
-			</div>
-			<div class="block">
-				<li>
-					<h4>CSS Externo:</h4>
-					<p>La forma más común y más fácil de mantener es utilizando un archivo externo de extensión <code>.css</code> accediendo a él en uno o más documentos HTML, con la etiqueta &lt;<code>link</code>&gt;en la cabecera, de la siguiente forma:</p>
-					<div class="code">
-						<code>link</code> <code class="a">rel</code>=<code class="c">"stylesheet"</code> <code class="a">href</code>=<code class="c">"(ruta del archivo .css)"</code>&gt;<br>
-					</div>
-					<br>
-					<p>Ejemplo:</p>
-					<table>
-						<tr>
-							<th>.HTML</th>
-							<th>.CSS</th>
-						</tr>
-						<tr>
-							<td>
-								<div class="code">
-									&lt;!<code>DOCTYPE</code> <code class="a">html</code>&gt;<br>
-									&lt;<code>html</code> <code class="a">lang</code>=<code class="c">"en"</code>&gt;<br>
-									&lt;<code>head</code>&gt;<br>
-										&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>meta</code> <code class="a">charset</code>=<code class="c">"UTF-8"</code>&gt;<br>
-										&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>meta</code> <code class="a">http-equiv</code>=<code class="c">"X-UA-Compatible"</code> <code class="a">content</code>=<code class="c">"IE=edge"</code>&gt;<br>
-										&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>meta</code> <code class="a">name</code>=<code class="c">"viewport"</code> <code class="a">content</code>=<code class="c">"width=device-width, initial-scale=1.0"</code>&gt;<br>
-										&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>link</code> <code class="a">rel</code>=<code class="c">"stylesheet"</code> <code class="a">href</code>=<code class="c">"../styles/location.css"</code>&gt;<br>
-										&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>title</code>&gt;Document&lt;/<code>title</code>&gt;<br>
-									&lt;/<code>head</code>&gt;<br>
-									&lt;<code>body</code>><br>
-										&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>p</code> <code class="a">class</code>=<code class="c">"emb2"</code>&gt; Texto &lt;/<code>p</code>&gt;<br>
-									&lt;/<code>body</code>&gt;<br>
-									&lt;/<code>html</code>&gt;<br>
-								</div>
-							</td>
-							<td>
-								En la ubicación <code>../styles/location.css</code>
-								<div class="code">
-									<code>p</code><code class="a">.emb2</code> { <br>
-									&nbsp;&nbsp;&nbsp;&nbsp;<code class="b">font-size</code>: <code class="m">40</code><code>px</code>;<br>
-									}
-								</div>
-							</td>
-						</tr>
-					</table>
-					<p class="emb2"> Texto </p>
-				</li>
-			</div>
-        </ol>
-    </div>
-</body>
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+	<script src="../../scripts/form.js"></script>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/location.css">
+    <title>Ubicación CSS</title>
+	<style>
+		p.emb { font-size: 30px; }
+	</style>
+</head>
+<body>
+    <h1>Ubicación CSS </h1> 
+    <a href="../.." class="index"> Volver a inicio</a>
+    <br>
+    <br>
+    <div class="block">
+        <p>CSS se puede escribir de 3 formas distintas:</p>
+        <ol>
+			<div class="block">
+				<li>
+					<h4>En línea:</h4>
+					<p>Escribir los estilos CSS dentro de la etiqueta por medio del atributo <code>style=""</code>, pero solo aplica para la etiqueta que lo contenga. Ejemplo:</p>
+					<div class="code">
+						Sin estilo &rarr; &lt;<code>p</code>&gt; Texto &lt;/<code>p</code>&gt;
+						<br>
+						Con estilo &rarr;&lt;<code>p</code> <code class="a">style</code>=<code class="c">"font-size: 20px;"</code>&gt; Texto &lt;/<code>p</code>&gt;
+					</div>
+					<p> Texto </p>
+					<p style="font-size: 20px;"> Texto </p>
+				</li>
+			</div>
+			<div class="block">
+				<li>
+					<h4>Embebidos:</h4>
+					<p>Escribir los estilos CSS del documento en general incrustados en el código HTML con la etiqueta &lt;<code>style</code>&gt;, encontrada comúnmente en la cabecera (head). Ejemplo:</p>
+					<div class="code">
+						&lt;!<code>DOCTYPE</code> <code class="a">html</code>&gt;<br>
+						&lt;<code>html</code> <code class="a">lang</code>=<code class="c">"en"</code>&gt;<br>
+						&lt;<code>head</code>&gt;<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>meta</code> <code class="a">charset</code>=<code class="c">"UTF-8"</code>&gt;<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>meta</code> <code class="a">http-equiv</code>=<code class="c">"X-UA-Compatible"</code> <code class="a">content</code>=<code class="c">"IE=edge"</code>&gt;<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>meta</code> <code class="a">name</code>=<code class="c">"viewport"</code> <code class="a">content</code>=<code class="c">"width=device-width, initial-scale=1.0"</code>&gt;<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>title</code>&gt;Document&lt;/<code>title</code>&gt;<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>style</code>&gt;<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>p</code><code class="a">.emb</code> { <code class="b">font-size</code>: <code class="m">30</code><code>px</code>; }<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<code>style</code>&gt;<br>
+						&lt;/<code>head</code>&gt;<br>
+						&lt;<code>body</code>><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>p</code> <code class="a">class</code>=<code class="c">"emb"</code>&gt; Texto &lt;/<code>p</code>&gt;<br>
+						&lt;/<code>body</code>&gt;<br>
+						&lt;/<code>html</code>&gt;<br>
+					</div>
+					<p class="emb"> Texto </p>
+				</li>
+			</div>
+			<div class="block">
+				<li>
+					<h4>CSS Externo:</h4>
+					<p>La forma más común y más fácil de mantener es utilizando un archivo externo de extensión <code>.css</code> accediendo a él en uno o más documentos HTML, con la etiqueta &lt;<code>link</code>&gt;en la cabecera, de la siguiente forma:</p>
+					<div class="code">
+						<code>link</code> <code class="a">rel</code>=<code class="c">"stylesheet"</code> <code class="a">href</code>=<code class="c">"(ruta del archivo .css)"</code>&gt;<br>
+					</div>
+					<br>
+					<p>Ejemplo:</p>
+					<table>
+						<tr>
+							<th>.HTML</th>
+							<th>.CSS</th>
+						</tr>
+						<tr>
+							<td>
+								<div class="code">
+									&lt;!<code>DOCTYPE</code> <code class="a">html</code>&gt;<br>
+									&lt;<code>html</code> <code class="a">lang</code>=<code class="c">"en"</code>&gt;<br>
+									&lt;<code>head</code>&gt;<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>meta</code> <code class="a">charset</code>=<code class="c">"UTF-8"</code>&gt;<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>meta</code> <code class="a">http-equiv</code>=<code class="c">"X-UA-Compatible"</code> <code class="a">content</code>=<code class="c">"IE=edge"</code>&gt;<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>meta</code> <code class="a">name</code>=<code class="c">"viewport"</code> <code class="a">content</code>=<code class="c">"width=device-width, initial-scale=1.0"</code>&gt;<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>link</code> <code class="a">rel</code>=<code class="c">"stylesheet"</code> <code class="a">href</code>=<code class="c">"../styles/location.css"</code>&gt;<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>title</code>&gt;Document&lt;/<code>title</code>&gt;<br>
+									&lt;/<code>head</code>&gt;<br>
+									&lt;<code>body</code>><br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&lt;<code>p</code> <code class="a">class</code>=<code class="c">"emb2"</code>&gt; Texto &lt;/<code>p</code>&gt;<br>
+									&lt;/<code>body</code>&gt;<br>
+									&lt;/<code>html</code>&gt;<br>
+								</div>
+							</td>
+							<td>
+								En la ubicación <code>../styles/location.css</code>
+								<div class="code">
+									<code>p</code><code class="a">.emb2</code> { <br>
+									&nbsp;&nbsp;&nbsp;&nbsp;<code class="b">font-size</code>: <code class="m">40</code><code>px</code>;<br>
+									}
+								</div>
+							</td>
+						</tr>
+					</table>
+					<p class="emb2"> Texto </p>
+				</li>
+			</div>
+        </ol>
+    </div>
+</body>
 </html>

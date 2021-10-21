@@ -1,0 +1,26 @@
+html {
+    padding: 30px;
+    background-color: rgb(28, 109, 175);
+}
+.sec1 {
+    color: #fff;
+    padding: 20px;
+    background-color: rgb(28, 109, 175);
+}
+.ico {
+    padding: 10px;
+    position: inherit;
+}
+img {
+    width: 200px;
+}
+.food {
+    background-color: #fff;
+    padding: 10px;
+}
+.food table tr td {
+    padding: 10px;
+    border: 1px;
+    border-color: #000;
+    border-style: solid;
+}

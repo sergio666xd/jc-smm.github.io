@@ -1,38 +1,38 @@
-body {
-    margin: 10px;
-}
-label {
-    width: 100px;
-    vertical-align: top;
-}
-label.e, label.t {
-    width: auto;
-}
-input#nombre, #email, #tel {
-    width: 250px;
-    vertical-align: baseline;
-}
-textarea {
-    width: 250px;
-    height: 110px;
-}
-.cf {
-    background: url(http://jc-smm.byethost6.com/Tests/2/img/bgdiv.png);
-    padding: 10px;
-    text-align: center;
-    width: 400px;
-}
-.c {
-    text-align: center;
-}
-.m {
-    width: 300px;
-}
-.table {
-    width: 460px;
-    padding: 10px;
-    border: solid 1px #000;
-}
-td, th {
-    padding-left: 5px;
+body {
+    margin: 10px;
+}
+label {
+    width: 100px;
+    vertical-align: top;
+}
+label.e, label.t {
+    width: auto;
+}
+input#nombre, #email, #tel {
+    width: 250px;
+    vertical-align: baseline;
+}
+textarea {
+    width: 250px;
+    height: 110px;
+}
+.cf {
+    background: url(http://jc-smm.byethost6.com/Tests/2/img/bgdiv.png);
+    padding: 10px;
+    text-align: center;
+    width: 400px;
+}
+.c {
+    text-align: center;
+}
+.m {
+    width: 300px;
+}
+.table {
+    width: 460px;
+    padding: 10px;
+    border: solid 1px #000;
+}
+td, th {
+    padding-left: 5px;
 }

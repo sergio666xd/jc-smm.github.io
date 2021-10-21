@@ -1,7 +1,60 @@
-
-td {
-    vertical-align: top;
-}
-.emb2 {
-    font-size: 40px;
+html {
+    padding: 5px;
+}
+h1 {
+    padding: 20px;
+    text-decoration: black;
+    text-decoration: underline;
+}
+div.block {
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    padding: 20px;
+}
+section {
+    height: 100vh;
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    padding: 10px;
+}
+img.link {
+    width: 100px;
+}
+a.index {
+    background-color: deepskyblue;
+    padding: 10px;
+    color: #fff;
+}
+a.index:hover {
+    background-color: aqua;
+    border: 2px;
+    border-left: #fff;
+    border-top: #fff;
+    border-style: solid;
+}
+.a {
+    color: rgb(167, 214, 36);
+}
+.c {
+    color: rgb(255, 195, 43);
+}
+.b {
+    color: rgb(0, 217, 255);
+}
+.m {
+    color: rgb(131, 62, 221);
+}
+.code {
+    background-color: rgb(155, 155, 155);
+    color: #fff;
+    padding: 5px;
+    width: auto;
+}
+td {
+    vertical-align: top;
+}
+.emb2 {
+    font-size: 40px;
 }
