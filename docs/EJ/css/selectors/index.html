@@ -1,27 +1,187 @@
-<!DOCTYPE html>
-<html lang="es-CO">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-	<script src="../../scripts/form.js"></script>
-	<link rel="stylesheet" href="../styles/global.css">
-    <link rel="stylesheet" href="../styles/selectors.css">
-    <title>Selectores CSS</title>
-</head>
-<body>
-    <h1>Ubicación CSS </h1> 
-    <a href="../.." class="index"> Volver a inicio</a>
-    <br>
-    <br>
-    <div class="block">
-		
-    </div>
-</body>
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+	<script src="../../scripts/form.js"></script>
+	<link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/selectors.css">
+    <title>Selectores CSS</title>
+</head>
+<body>
+    <h1>Ubicación CSS </h1> 
+    <a href="../.." class="index"> Volver a inicio</a>
+    <br>
+    <br>
+    <div class="block">
+        <p>Los selectores definen sobre qué elementos se aplicará un conjunto de reglas CSS.</p>
+		<br>
+		<h2>Selectores básicos</h2>
+        <div class="block">
+            <h4>
+                Selector de tipo
+            </h4>
+            <p>
+                Selecciona todos los elementos que coinciden con el nombre del elemento especificado.
+			</p>
+			<p>
+				Sintaxis: <code>eltname</code> 
+            </p>
+            <p>
+				Ejemplo: input se aplicará a cualquier elemento &lt;<code>input</code>&gt;. 
+			</p>
+        </div>
+        <div class="block">
+            <h4>
+                Selector de clase
+            </h4>
+			<p>
+				Sintaxis: .classname
+			</p>
+            <p>
+                 Selecciona todos los elementos que tienen el atributo de class especificado.
+            </p>
+            <p>
+				Ejemplo: .index seleccionará cualquier elemento que tenga la clase "index".
+			</p>
+        </div>
+        <div class="block">
+            <h4>
+                Selector de ID
+            </h4>
+			<p>
+				Selecciona un elemento basándose en el valor de su atributo id. Solo puede haber un elemento con un determinado ID dentro de un documento.
+			</p>
+            <p>
+                Sintaxis: #idname
+            </p>
+            <p>
+				Ejemplo: #toc se aplicará a cualquier elemento que tenga el ID "toc".
+			</p>
+        </div>
+		<div class="block">
+			<h4>
+				Selector universal
+			</h4>
+			<p>
+				Selecciona todos los elementos. Opcionalmente, puede estar restringido a un espacio de nombre específico o a todos los espacios de nombres.
+			</p>
+			<p>
+				Sintaxis: * ns|* *|*
+			</p>
+			<p>
+				Ejemplo: * se aplicará a todos los elementos del documento.
+			</p>
+		</div>
+		<div class="block">
+			<h4>
+				Selector de atributo
+			</h4>
+			<p>
+				Selecciona elementos basándose en el valor de un determinado atributo.
+			</p>
+			<p>
+				Sintaxis: [attr] [attr=value] [attr~=value] [attr|=value] [attr^=value] [attr$=value] [attr*=value]
+			</p>
+			<p>
+				Ejemplo: [autoplay] seleccionará todos los elementos que tengan el atributo "autoplay" establecido (a cualquier valor).
+			</p>
+		</div>
+		<br>
+		<h2>Combinadores</h2>
+		<div class="block">
+			<h4>
+				Combinador de hermanos adyacentes
+			</h4>
+			<p>
+				El combinador + selecciona hermanos adyacentes. Esto quiere decir que el segundo elemento sigue directamente al primero y ambos comparten el mismo elemento padre.
+			</p>
+			<p>
+				Sintaxis: A + B
+			</p>
+			<p>
+				Ejemplo: La regla h2 + p se aplicará a todos los elementos &lt;<code>p</code>&gt; que siguen directamente a un elemento &lt;<code>h2</code>&gt;.
+			</p>
+		</div>
+		<div class="block">
+			<h4>
+				Combinador general de hermanos
+			</h4>
+			<p>
+				El combinador ~ selecciona hermanos. Esto quiere decir que el segundo elemento sigue al primero (no necesariamente de forma inmediata) y ambos comparten el mismo elemento padre.
+			</p>
+			<p>
+				Sintaxis: A ~ B
+			</p>
+			<p>
+				Ejemplo: La regla p ~ span se aplicará a todos los elementos &lt;<code>span</code>&gt; que siguen un elemento &lt;<code>p</code>&gt;.
+			</p>
+		</div>
+		<div class="block">
+			<h4>
+				Combinador de descendientes
+			</h4>
+			<p>
+				El combinador (espacio) selecciona los elementos que son descendientes del primer elemento.
+			</p>
+			<p>
+				Sintaxis: A B
+			</p>
+			<p>
+				Ejemplo: La regla div span se aplicará a todos los elementos &lt;<code>span</code>&gt; que están dentro de un elemento &lt;<code>div</code>&gt;.
+			</p>
+		</div>
+		<div class="block">
+			<h4>
+				Combinador de columna
+			</h4>
+			<p>
+				El combinador || selecciona los elementos especificados pertenecientes a una columna.
+			</p>
+			<p>
+				Sintaxis: A || B
+			</p>
+			<p>
+				Ejemplo: col || td seleccionará todos los elementos &lt;<code>td</code>&gt; que pertenezcan al ámbito de &lt;<code>col</code>&gt;.
+			</p>
+		</div>
+		<br>
+		<div class="block">
+			<h2>
+				Pseudoclases
+			</h2>
+			<p>
+				Las pseudoclases permiten la selección de elementos, basada en información de estado que
+	no está contenida en el árbol de documentos.
+			</p>
+			<p>
+				Ejemplo: La regla a:visited se aplicará a todos los elementos <a> que hayan sido visitados por el usuario.
+			</p>
+		</div>
+		<br>
+		<div class="block">
+			<h2>
+				Pseudoelementos
+			</h2>
+			<p>
+				Los pseudoelementos son abstracciones del árbol que representan entidades más allá
+				de los elementos HTML. Por ejemplo, HTML no tiene un elemento que describa la
+				primera letra de un párrafo ni los marcadores de una lista. Los pseudoelementos
+				representan estas entidades y nos permiten asignarles reglas CSS. De este modo
+				podemos diseñar estas entidades de forma independiente.
+			</p>
+			<p>
+				Ejemplo: La regla p::first-line se aplicará a la primera línea de texto de todos los
+				elementos &lt;<code>p</code>&gt;.
+			</p>
+		</div>
+    </div>
+</body>
 </html>
