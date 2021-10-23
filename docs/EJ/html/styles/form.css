@@ -1,39 +1,5 @@
-html {
-    padding: 5px;
-}
-h1 {
-    padding: 20px;
-    text-decoration: black;
-    text-decoration: underline;
-}
-div {
-    border: 1px;
-    border-color: black;
-    border-style: solid;
-    padding: 10px;
-}
-section {
-    height: 100vh;
-    border: 1px;
-    border-color: black;
-    border-style: solid;
-    padding: 10px;
-}
-img.link {
-    width: 100px;
-}
-a.index {
-    background-color: deepskyblue;
-    padding: 10px;
-    color: #fff;
-}
-a.index:hover {
-    background-color: aqua;
-    border: 2px;
-    border-left: #fff;
-    border-top: #fff;
-    border-style: solid;
-}
+@import './global.css';
+
 label {
     width: 100px;
     vertical-align: top;
