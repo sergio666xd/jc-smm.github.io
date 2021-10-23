@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+div {
+    border-radius: 5px;
+    width: 594px;
+    margin: 20px;
+}
+figure {
+    width: 594px;
+    height: 334px;
+    transition: 0.4s;
+}
+img {
+    width: 100%;
+    border-radius: 5px;
+}
+h3 {
+    width: 250px;
+    margin: 10px 0;
+}
+figure:hover {
+    transform: scale(1.1);
+}

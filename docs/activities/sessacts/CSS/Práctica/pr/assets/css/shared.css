@@ -1,0 +1,27 @@
+.navbar, .footer {
+    width: 80%;
+    margin: 20px auto;
+    background-color: rgb(235, 235, 235);
+    padding: 20px 0;
+    text-align: center;
+}
+.navbar__logo {
+    border: 1px solid;
+    display: inline;
+    padding: 5px;
+}
+.navbar__tittle {
+    font-size: 35px;
+    margin-top: 20px;
+}
+
+.footer {
+    text-align: right;
+    padding: 20px 0;
+}
+
+@media(max-width: 480px) {
+    .navbar, .footer {
+        
+    }
+}
