@@ -1,31 +1,17 @@
-html {
-    padding: 5px;
-}
-h1 {
-    padding: 10px;
-}
-h3 {
-    color: white;
-}
-div {
-    background-color: dimgrey;
-    padding: 20px;
-    width: 400px;
-}
-a {
-    background-color: deepskyblue;
-    padding: 10px;
-    margin: 10px;
-    width: 300px;
-    text-align: center;
-    color: #fff;
-}
-a:hover {
-    background-color: aqua;
-    border: 2px solid;
-    border-left: #fff;
-    border-top: #fff;
-}
-div a {
-    display:block;
+@import '../../styles/global-menu.css';
+
+h3.js, h3.css {
+    display: inline-block;
+    margin-left: 10px;
+}
+i {
+    display: inline-block;
+}
+.colorjs {
+    color: rgb(255, 238, 0);
+    font-size: 24px;
+}
+.colorcss {
+    color: rgb(82, 179, 240);
+    font-size: 24px;
 }
