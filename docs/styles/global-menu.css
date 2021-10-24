@@ -23,14 +23,14 @@ div div {
     width: 100%;
 }
 
-a {
+a.link-home, a.link-index {
     background-color: deepskyblue;
     text-decoration: none;
     padding: 10px;
     margin: 2px;
     color: #fff;
 }
-a:hover {
+a.link-home:hover, a.link-index:hover {
     background-color: aqua;
     border: 2px solid;
     margin: 1px;
