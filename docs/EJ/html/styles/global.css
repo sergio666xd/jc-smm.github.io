@@ -38,3 +38,31 @@ a.index:hover {
     border-top: #fff;
     border-style: solid;
 }
+
+@media (max-width:750px) {
+    html {
+        padding: 2px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+    h3 {
+        font-size: 16px;
+    }
+    h4 {
+        font-size: 14px;
+    }
+    h5 {
+        font-size: 12px;
+    }
+    h6 {
+        font-size: 11px;
+    }
+    a {
+        font-size: 11px;
+        padding: 5px;
+    }
+}
