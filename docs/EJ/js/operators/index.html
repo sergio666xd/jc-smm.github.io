@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESTAURANTE ITALIANO</title>
+    <style>
+        input {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <H1>RESTAURANTE ITALIANO</H1>
+    <form action="" id="Pedido" onsubmit="enviar();">
+        <label for="cantpizza">Cantidad de Pizzas</label>
+        <input type="number" name="cantpizza" id="cantpizza" placeholder="ingresa cantidad de Pizzas a ordenar" value="0">
+        <br>
+        <label for="cantbebida">Cantidad de Bebidas</label>
+        <input type="number" name="cantbebida" id="cantbebida" placeholder="ingresa cantidad de Bebidas a ordenar" value="0">
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+    <h5>Revisar en la consola (f12) el total.</h5>
+    <script src="./app.js"></script>
+</body>
+</html>
