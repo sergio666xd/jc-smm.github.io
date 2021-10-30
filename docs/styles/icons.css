@@ -1,0 +1,19 @@
+h3.js, h3.css, h3.html {
+    display: inline-block;
+    margin-left: 10px;
+}
+i {
+    display: inline-block;
+}
+.colorjs {
+    color: rgb(255, 238, 0);
+    font-size: 24px;
+}
+.colorcss {
+    color: rgb(82, 179, 240);
+    font-size: 24px;
+}
+.colorhtml {
+    color: rgb(219, 80, 0);
+    font-size: 24px;
+}

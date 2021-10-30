@@ -1,17 +1,1 @@
 @import '../../styles/global-menu.css';
-
-h3.js, h3.css {
-    display: inline-block;
-    margin-left: 10px;
-}
-i {
-    display: inline-block;
-}
-.colorjs {
-    color: rgb(255, 238, 0);
-    font-size: 24px;
-}
-.colorcss {
-    color: rgb(82, 179, 240);
-    font-size: 24px;
-}
