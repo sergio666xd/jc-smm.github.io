@@ -9,10 +9,12 @@ let foundk = null;
 
 let usernew = null;
 let keynew = null;
+let push = null;
 
 const err1 = "Error: El usuario ingresado no existe o la contraseña es incorrecta";
-const err2 = "Error: No se ingresó usuario. Al dar click en aceptar deberá ingresar el nuevo usuario.";
-const err3 = "Error: El usuario '" + usernew +"' ya existe o no se ingresó. Al dar click en aceptar deberá ingresar el nuevo usuario.";
+const err2 = "Error: No se ingresó usuario.";
+const err3 = "Error: El usuario '" + usernew +"' ya existe o no se ingresó.";
+const err4 = "Error: Se ingresaron campos vacíos.";
 const alert1 = "Registro cancelado";
 const alert2 = "Registro exitoso";
 
@@ -63,42 +65,54 @@ function register() {
 		keynew = (prompt(`SIGNUP:
 		Ingrese contraseña:`));
 	}
-	if (keynew == null || keynew == "") {
-		keynew = "a";
-		usernew = "a";
+	if (keynew == null) {
+		$('#alerts').removeClass('error');
+		$('#alerts').removeClass('success');
+		$('#alerts').addClass('alert');
+		document.getElementById("alerts").innerHTML = alert1;
 	}
-	while (usernew == user || usernew == null || usernew == "") {
-		if (usernew == "") {
-			alert(err2);
-		} else if (usernew == user) {
-			alert(err3);
-		}
-		
-		usernew = (prompt(`SINGUP:
-	Ingrese usuario:`));
-		if (usernew == null) {
-			usernew = "a";
-		}
+	if (keynew == "") {
+		$('#alerts').addClass('error');
+		$('#alerts').removeClass('success');
+		$('#alerts').removeClass('alert');
+		document.getElementById("alerts").innerHTML = err4;
 	}
-	
-	
-	if (usernew == "a" || keynew == "a") {
-		setTimeout( function (){
-			$('#alerts').removeClass('error');
+	for (i = 0; i < user.length; i++) {
+		if (usernew == user[i]) {
+			$('#alerts').addClass('error');
 			$('#alerts').removeClass('success');
-			$('#alerts').addClass('alert');
-			document.getElementById("alerts").innerHTML = alert1;
-		}, 50);
-	} else {
-		setTimeout( function (){        
-			user.push(usernew);
-			key.push(keynew);
-			$('#alerts').removeClass('error');
-			$('#alerts').addClass('success');
 			$('#alerts').removeClass('alert');
-			document.getElementById("alerts").innerHTML = alert2;
-		}, 50);
+			document.getElementById("alerts").innerHTML = err3;
+		}
 	}
+	// for (i = 0; i < user.length; i++) {
+	// 	while (usernew == user[i] || usernew == null || usernew == "") {
+	// 		if (usernew == "") {
+	// 			$('#alerts').addClass('error');
+	// 			$('#alerts').removeClass('success');
+	// 			$('#alerts').removeClass('alert');
+	// 			document.getElementById("alerts").innerHTML = err2;
+	// 		} else if (usernew == user[i]) {
+				
+	// 		}
+			
+	// 		usernew = (prompt(`SINGUP:
+	// 	Ingrese usuario:`));
+	// 		if (usernew == null) {
+	// 			usernew = "a";
+	// 		}
+	// 	}
+	// }
+	
+	if (push==true) {
+		user.push(usernew);
+		key.push(keynew);
+		$('#alerts').removeClass('error');
+		$('#alerts').addClass('success');
+		$('#alerts').removeClass('alert');
+		document.getElementById("alerts").innerHTML = alert2;
+	}
+
 }
 function logOut() {
 	a = 0;

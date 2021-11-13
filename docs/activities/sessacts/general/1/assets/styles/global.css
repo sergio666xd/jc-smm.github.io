@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    transition: all .5s ease;
+}
+body {
+    background-color: #f1f1f1;
+}
+.dark {
+    background-color: #111;
+}
+
+header,main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+.navbar {
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 15px 20px;
+    box-shadow: 10px 10px 20px 20px rgba(170, 170, 170, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar__logo {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.navbar__menu li {
+    list-style: none;
+}
+.navbar__switch {
+    background-color: #343d5b;
+    border-radius: 1000px;
+    border: none;
+    display: flex;
+    position: relative;
+    cursor: pointer;
+}
+.navbar__switch span {
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    display: block;
+    line-height: 30px;
+}
+.navbar__switch::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    box-shadow: 10px 10px 20px 20px rgba(170, 170, 170, 0.2);
+}
+.navbar__switch--active {
+    background-color: orange;
+}
+.navbar__switch--active::after {
+    left: 0;
+    right: unset;
+}
