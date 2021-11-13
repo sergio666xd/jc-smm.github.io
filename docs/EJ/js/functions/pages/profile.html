@@ -1,0 +1,23 @@
+<h3>Hola <b><span id="user"></span></b>, bienvenido de nuevo!</h3><button id="exit" onclick="logOut()">Cerrar sesión</button>
+<br>
+<h1>Calculadora</h1>
+<br>
+<h3>Valor de A: </h3> <input id="numa" type="number" />
+<br>
+<br>
+<h3>Valor de B: </h3> <input id="numb" type="number" />
+<br>
+<br>
+<button onclick="sumar()">Sumar</button>
+<button onclick="restar()">Restar (A - B)</button>
+<button onclick="multiplicar()">Multiplicar</button>
+<button onclick="dividir()">Dividir (A ÷ B)</button>
+<br>
+<br>
+<div id="result"><span class="h">Historial:</span>  <button id="clearh" onclick="clearh()"><i class="fas fa-trash-alt"></i></button>
+    <br>
+    <br>
+    <div id="history"></div>
+</div>
+<p>Puedes comprobar el historial en la consola.</p>
+<script src="./scripts/calculator.js"></script>

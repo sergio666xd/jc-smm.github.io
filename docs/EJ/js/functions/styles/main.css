@@ -1,0 +1,25 @@
+.error {
+    color: #f00;
+}
+.success {
+    color: #0c0;
+}
+.alert {
+    color: #fb0;
+}
+#result {
+    width: 30%;
+    border: 1px solid;
+    padding: 8px;
+}
+.h {
+    margin-bottom: 10px;
+}
+#history {
+    width: auto;
+    border: 1px solid;
+    padding: 8px 8px 0 8px;
+}
+#clearh {
+    float: right;
+}
