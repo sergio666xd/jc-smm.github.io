@@ -2,7 +2,7 @@
 
 .cards {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 30px;
 }
 .cards__card {
@@ -20,7 +20,7 @@
     height: calc(100% - 40px);
     position: absolute;
     top: -40px;
-    left: 22.5%;
+    left: 11.5%;
 }
 .cards__card-image img {
     width: 100%;

@@ -19,6 +19,10 @@ body.dark .navbar {
 body.dark .navbar {
     background-color: #222;
 }
+body.dark .navbar__logo {
+    color: #fff;
+}
+
 
 header,main {
     width: 90%;
