@@ -16,9 +16,6 @@ body.dark .navbar {
     background-color: #222;
     color: #fff;
 }
-body.dark .navbar {
-    background-color: #222;
-}
 body.dark .navbar__logo {
     color: #fff;
 }
@@ -84,4 +81,8 @@ header,main {
 .navbar__switch--active::after {
     left: 0;
     right: unset;
+}
+
+.dark {
+    background-color: #111;
 }
