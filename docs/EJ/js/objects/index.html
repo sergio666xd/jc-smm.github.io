@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=1100px, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		table {
+			border-spacing: 0;
+			border: 1px solid;
+			text-align: center;
+		}
+
+		p {
+			margin: 10px;
+		}
+
+		td,
+		th {
+			border: .1px solid;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Mis amigos</h1>
+	<hr>
+	<h3>Añadir amigo</h3>
+	<form>
+		<label for="nombre">Ingresa el nombre de tu amigo:</label>
+		<input type="text" name="nombre" id="nombre" placeholder="Nombre del amigo">
+		<br>
+		<label for="nombre">Ingresa la edad de tu amigo:</label>
+		<input type="number" name="edad" id="edad" placeholder="Edad del amigo">
+		<br>
+		<label for="study">¿Tu amigo estudia?:
+			Sí<input type="radio" name="study" id="study">
+			No<input type="radio" name="study" id="study"></label>
+		<br>
+		<label for="job">¿Tu amigo trabaja?:
+			Sí<input type="radio" name="job" id="job">
+			No<input type="radio" name="job" id="job"></label>
+		<br>
+		<label for="hobbies">Hobies de tu amigo </label>
+		(Sepáralos con una coma (,)):
+		<input type="text" name="hobbies" id="hobbies" placeholder="Hobbies. Sepáralos con una coma (,)">
+		<br>
+		<br>
+		<button type="reset" onclick="addAmigo()">Añadir Amigo</button>
+	</form>
+	<hr>
+	<h3>Lista de amigos</h3>
+	<table>
+		<thead>
+			<tr>
+				<th>N°:</th>
+				<th>Nombre:</th>
+				<th>Edad:</th>
+				<th>Estudia:</th>
+				<th>Trabaja:</th>
+				<th>Hobbies:</th>
+			</tr>
+		</thead>
+		<tbody id="tabla"></tbody>
+	</table>
+	<script src="./app.js"></script>
+</body>
+
+</html>
