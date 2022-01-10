@@ -1,0 +1,26 @@
+* {
+				padding: 0;
+				margin: 0;
+				transition: all 1s ease-in-out;
+}
+
+body {
+				background-color: #ff0034;
+}
+
+.grand {
+				height: 90vh;
+}
+
+.grand__img {
+				margin: auto 0;
+				width: 100%;
+}
+.grand__img img {
+				width: inherit;
+				transform: rotate3d(1,0,0,180deg);
+}
+
+.rotate {
+				transform: rotate3d(0,0,0,0) !important;
+}
