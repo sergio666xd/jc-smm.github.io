@@ -121,6 +121,10 @@ h5 {
 	top: 50px;
 }
 
+.name {
+	text-transform: uppercase;
+}
+
 button {
 	border-radius: 15px !important;
 	font-size: 60px  !important;

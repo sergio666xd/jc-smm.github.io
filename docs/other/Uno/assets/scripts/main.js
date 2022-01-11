@@ -71,7 +71,7 @@ function goBack(names) {
 }
 
 function blocked(nextName,actualName) {
-	document.querySelector("#blocked").innerHTML = '¡<b>' + nextName + '</b> ha sido bloquead@ por <b>' + actualName + '</b>!';
+	document.querySelector("#blocked").innerHTML = '¡<span class="name"><b>' + nextName + '</b></span> ha sido bloquead@ por <span class="name"><b>' + actualName + '</b></span>!';
 	document.querySelector(".blocked").classList.add("blocked--active");
 	setTimeout(() => {
 		document.querySelector(".blocked").classList.remove("blocked--active");
