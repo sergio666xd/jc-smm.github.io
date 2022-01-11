@@ -8,8 +8,6 @@ function twoP(button,ctrl) {
             const textname = document.querySelector("#name");
             const right = document.querySelector("#right");
             const left = document.querySelector("#left");
-            textname.innerHTML = namesP2[posi];
-            nameNext(pCant2,namesP2);
             document.querySelector(".control-btns").innerHTML = ctrl;
             gameTwo();
 			goBack(namesP2);
@@ -34,15 +32,24 @@ function gameTwo() {
     $("#next").click(function () {
         if (namesP2[0]==undefined) {
             names(namesP2);
-        }
-        
-        if (posi == pCant2) {
             posi = 0;
-        } else if (posi == 0) {
-            posi = pCant2;
+            nextName(namesP2,pCant2);
+        } else {
+            if ($(".grand__img img").hasClass("rotate")) {
+                if (posi == 0) {
+                    posi = pCant2;
+                } else {
+                    posi = posi - 1;
+                }
+            } else {
+                if (posi == pCant2) {
+                    posi = 0;
+                } else {
+                    posi = posi + 1;
+                }
+            }
+            nextName(namesP2,pCant2);
         }
-        
-        nextName(namesP2,pCant2);
     }); 
     
     $("#ban").click(function () {

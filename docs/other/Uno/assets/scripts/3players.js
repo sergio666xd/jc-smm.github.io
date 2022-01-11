@@ -8,8 +8,6 @@ function threeP(button,ctrl) {
             const textname = document.querySelector("#name");
             const right = document.querySelector("#right");
             const left = document.querySelector("#left");
-            textname.innerHTML = namesP3[posi];
-            nameNext(pCant3,namesP3);
             document.querySelector(".control-btns").innerHTML = ctrl;
             gameThree();
 			goBack(namesP3);
@@ -63,22 +61,25 @@ function gameThree() {
     
     $("#next").click(function () {
         if (namesP3[0]==undefined) {
-        names(namesP3);
-        }
-        if ($(".grand__img img").hasClass("rotate")) {
-            if (posi == 0) {
-                posi = pCant3;
-            } else {
-                posi = posi - 1;
-            }
+            names(namesP3);
+            posi = 0;
+            nextName(namesP3,pCant3);
         } else {
-            if (posi == pCant3) {
-                posi = 0;
+            if ($(".grand__img img").hasClass("rotate")) {
+                if (posi == 0) {
+                    posi = pCant3;
+                } else {
+                    posi = posi - 1;
+                }
             } else {
-                posi = posi + 1;
+                if (posi == pCant3) {
+                    posi = 0;
+                } else {
+                    posi = posi + 1;
+                }
             }
+            nextName(namesP3,pCant3);
         }
-        nextName(namesP3,pCant3);
     }); 
     
     $("#ban").click(function () {
