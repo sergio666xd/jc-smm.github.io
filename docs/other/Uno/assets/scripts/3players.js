@@ -1,4 +1,5 @@
-namesP3 = ["Aleja", "Sergio", "Eunice"];
+namesP3 = [];
+namesP3.length = 3;
 pCant3 = namesP3.length-1;
 
 function threeP(button,ctrl) {
@@ -8,36 +9,15 @@ function threeP(button,ctrl) {
             const right = document.querySelector("#right");
             const left = document.querySelector("#left");
             textname.innerHTML = namesP3[posi];
-            nameNext();
+            nameNext(pCant3,namesP3);
             document.querySelector(".control-btns").innerHTML = ctrl;
             gameThree();
-			goBack();
+			goBack(namesP3);
         }, 1000);
     }
 }
 
-function nameNext() {
-    if ($(".grand__img img").hasClass("rotate")) {
-        if (posi == 0) {
-            posiN = pCant3;
-        } else if (posi == 1) {
-            posiN = 0;
-        } else {
-            posiN = posi - 1;
-        }
-    } else {
-        if (posi == pCant3) {
-            posiN = 0;
-        } else if (posi == (pCant3-1)) {
-            posiN = pCant3;
-        } else {
-            posiN = posi + 1;
-        }
-    }
-    document.querySelector("#nextName").innerHTML = namesP3[posiN];
-}
-
-function negative() {
+function negative3() {
     if (posi == pCant3) {
         posi = posi - 1;
     } else if (posi == 0) {
@@ -46,7 +26,7 @@ function negative() {
         posi = posi - 1;
     }
 }
-function positive() {
+function positive3() {
     if (posi == pCant3) {
         posi = 0;
     } else if (posi == 0) {
@@ -54,17 +34,6 @@ function positive() {
     } else {
         posi = posi + 1;
     }
-}
-
-function changeName() {
-    setTimeout(() => {
-        document.querySelector("#name").innerHTML = namesP3[posi];
-        nameNext()
-    }, 500);
-}
-function nextName() {
-    document.querySelector("#name").innerHTML = namesP3[posi];
-    nameNext()
 }
 
 function arrowright() {
@@ -76,56 +45,26 @@ function arrowleft() {
     right.innerHTML = '';
 }
 
-
-// change.addEventListener("click", function () {
-//     rotate.classList.toggle("rotate");
-//     setTimeout(() => {
-//         if (rotate.classList.contains("rotate")) {
-//             arrowleft();
-//             negative();
-//         } else {
-//             arrowright();
-//             posi = posi + 1;
-//         }
-//     }, 500)
-//     changeName();
-// })
-
 function gameThree() {
     $("#change").click(function () {
-        let namesP3 = ["Aleja", "Sergio", "Eunice"];
         $(".grand__img img").toggleClass("rotate");
         // rotate.classList.toggle("rotate");
         setTimeout(() => {
             if ($(".grand__img img").hasClass("rotate")) {
                 arrowleft();
-                negative();
+                negative3();
             } else {
                 arrowright();
-                positive();
+                positive3();
             }
         }, 500)
-        changeName();
+        changeName(namesP3,pCant3);
     });
     
-    // next.addEventListener("click", function () {
-    //     if (rotate.classList.contains("rotate")) {
-    //         if (posi == 0) {
-    //             posi = pCant3;
-    //         } else {
-    //             posi = posi - 1;
-    //         }
-    //     } else {
-    //         if (posi == pCant3) {
-    //             posi = 0;
-    //         } else {
-    //             posi = posi + 1;
-    //         }
-    //     }
-    //     nextName();
-    // })
-    
     $("#next").click(function () {
+        if (namesP3[0]==undefined) {
+        names(namesP3);
+        }
         if ($(".grand__img img").hasClass("rotate")) {
             if (posi == 0) {
                 posi = pCant3;
@@ -139,10 +78,11 @@ function gameThree() {
                 posi = posi + 1;
             }
         }
-        nextName();
+        nextName(namesP3,pCant3);
     }); 
     
     $("#ban").click(function () {
+        blocked(nn,namesP3[posi])
         if ($(".grand__img img").hasClass("rotate")) {
             if (posi == 0) {
                 posi = pCant3-1;
@@ -160,6 +100,6 @@ function gameThree() {
                 posi = posi + 2;
             }
         }
-        nextName();
+        nextName(namesP3,pCant3);
     });
 }
