@@ -1,49 +1,66 @@
-let name = ["Aleja", "Sergio", "Eunice"];
-
-const change = document.querySelector("#change");
-const rotate = document.querySelector(".grand__img img");
-const next = document.querySelector("#next");
-const textname = document.querySelector("#name")
-
-let right = false;
-let posi = 2;
-
-$(document).ready(function (){
-				textname.innerHTML = name[posi];
+$('#game').load('./assets/game/1select.html');
+$(document).ready(() => {
+	$("div").delegate("button", "click", function () {
+		button = $(this).attr("id");
+		if (button == "two") {
+			$('#game').load('./assets/game/2players.html');
+		} else if (button == "three") {
+			$('#game').load('./assets/game/3players.html');
+		}
+	});
+	// two.addEventListener("click", function (){
+	// $('#game').load('./assets/game/2players.html');
+	// });
+	// three.addEventListener("click", function (){
+	// });
 });
 
-function negative() {
-				if (posi == 2) {
-								posi = 0;
-				}else {
-								posi = posi - 1;
-				}
-}																												
 
-function changeName() {
-				textname.innerHTML = name[posi];
+function color() {
+    if (nombreColor == "red") {
+        $("#grand").addClass("red");
+        $("#grand").removeClass("green");
+        $("#grand").removeClass("yellow");
+        $("#grand").removeClass("blue");
+    } else if (nombreColor == "green") {
+        $("#grand").removeClass("red");
+        $("#grand").addClass("green");
+        $("#grand").removeClass("yellow");
+        $("#grand").removeClass("blue");
+    } else if (nombreColor == "yellow") {
+        $("#grand").removeClass("red");
+        $("#grand").removeClass("green");
+        $("#grand").addClass("yellow");
+        $("#grand").removeClass("blue");
+    } else {
+        $("#grand").removeClass("red");
+        $("#grand").removeClass("green");
+        $("#grand").removeClass("yellow");
+        $("#grand").addClass("blue");
+    }
 }
-function nextName() {
-				textname.innerHTML = name[posi];
-}
 
-change.addEventListener("click", ()=>{
-				rotate.classList.toggle("rotate");
-				setTimeout(()=>{
-								if (rotate.classList.contains("rotate")) {
-								negative();
-				}else {
-								posi = posi + 1;
-				}
-				}, 500)
-				changeName();
-});
-
-next.addEventListener("click", ()=>{
-				if (rotate.classList.contains("rotate")) {
-								posi = posi - 1;
-				}else {
-								posi = posi + 1;
-				}
-				nextName();
-});
+$("#color").click(function () {
+    nombreColor = $(this).attr("value");
+    if (nombreColor == "red") {
+        $("#grand").addClass("red");
+        $("#grand").removeClass("green");
+        $("#grand").removeClass("yellow");
+        $("#grand").removeClass("blue");
+    } else if (nombreColor == "green") {
+        $("#grand").removeClass("red");
+        $("#grand").addClass("green");
+        $("#grand").removeClass("yellow");
+        $("#grand").removeClass("blue");
+    } else if (nombreColor == "yellow") {
+        $("#grand").removeClass("red");
+        $("#grand").removeClass("green");
+        $("#grand").addClass("yellow");
+        $("#grand").removeClass("blue");
+    } else {
+        $("#grand").removeClass("red");
+        $("#grand").removeClass("green");
+        $("#grand").removeClass("yellow");
+        $("#grand").addClass("blue");
+    }
+})
