@@ -1,6 +1,7 @@
 * {
 	padding: 0;
 	margin: 0;
+	box-sizing: border-box;
 	transition: all 1s ease-in-out;
 }
 
@@ -19,18 +20,103 @@
 
 body {
 	height: 100vh;
-	justify-content: center;
 	align-items: center;
-	overflow: hidden;
+	overflow: visible;
+}
+
+body.main {
+	overflow: scroll;
 }
 
 .grand {
-	height: 95vh;
+	height: 100vh;
+	width: 100%;
 }
 
+.navTop {
+	position: fixed;
+	align-content: center;
+	width: 100%;
+	z-index: 2;
+}
+
+#settingBox {
+	float: left;
+	position: absolute;
+	left: -120%;
+	top: -120%;
+	width: 100%;
+	background-color: #fff;
+	z-index: 3;
+	height: 100vh;
+}
+#settingBox h1 {
+	font-size: 7rem;
+}
+#settingBox h2 {
+	font-size: 5rem;
+	text-align: right;
+	margin-right: 2rem;
+}
+#settingBox h3 {
+	font-size: 4.5rem;
+	text-align: left;
+}
+#settingBox span {
+	font-size: 4rem;
+}
+#settingBox .bBar {
+	float: right;
+	width: fit-content;
+}
+#settingBox.actives {
+	left: 0;
+	top: 0;
+	position: fixed;
+	overflow: scroll;
+}
+#settingBox.actives .bBar {
+	margin: 1rem 2rem 0 0;
+}
+.s-items button {
+	width: 80%;
+	border: #000 2px dotted;
+	text-align: left;
+	padding-left: 10%;
+}
+.s-items button:hover {
+	border: #000 3px solid;
+	background-color: #ccc;
+}
+.s-config #backS {
+	float: left;
+	padding: 1rem;
+	margin-left: 2rem;
+}
+.darkS {
+	display: none;
+}
+.s-c-menu {
+	margin: 2rem;
+	text-align: left;
+	background-color: #fff;
+}
+
+hr {
+	border: #000 1px solid;
+}
+
+.loadDiv {
+	width: 100%;
+}
+
+img.load {
+    width: 270px;
+    height: 60px;
+    object-fit: none;
+}
 
 .grand__img {
-	margin: 0 !important;
 	width: 100%;
 	margin-block-start: 0;
     margin-block-end: 0;
@@ -39,15 +125,38 @@ body {
 	position: relative;
 	display: block;
 	z-index: 0;
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0.589);
 }
 
 .container-turn {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 5.5rem;
+	border-radius: 50%;
+	background-image: url(../img/uno.png);
+	background-size: cover;
+	overflow: hidden;
+	/* background-color: rgba(0, 0, 0, 0.425); */
 }
 .turn {
+	width: 650px;
+	height: 650px;
 	position: absolute;
+	border-radius: 50%;
+	overflow: hidden;
+	padding-bottom: 5rem;
+	background-image: url(../img/uno.png);
+	background-size: cover;
+	/* margin-bottom: 2rem; */
+	border-color: #000;
+	color: #fff;
+	z-index: 1;
+}
+
+.turn h3, .turn h5 {
+	background-color: rgba(17, 17, 17, 0.623);
 }
 
 h3 {
@@ -56,21 +165,29 @@ h3 {
 #name {
 	font-size: 100px;
 	text-transform: uppercase;
+	border: 3px solid;
 }
 h5 {
 	font-size: 50px;
 }
-#nextName {
+#nextName, #backName {
 	font-size: 60px;
 	text-transform: uppercase;
+	border: 1.5px solid;
 }
 
 .grand__img img {
 	position: relative;
 	display: block;
 	width: inherit;
-	transform: rotate3d(1,0,0,180deg);
+	transition: all 3s linear;
 }
+
+.rotateNo {
+	transform: rotate3d(1,0,0,180deg);
+	animation: left 3s normal linear infinite;
+}
+
 .grand__img-select {
 	margin-block-start: 0;
     margin-block-end: 0;
@@ -80,8 +197,7 @@ h5 {
 	width: 100% !important;
 }
 .grand__img-select img {
-	width: inherit;
-	height: inherit;
+	width: 50%;
 }
 
 #change {
@@ -92,11 +208,12 @@ h5 {
 }
 
 .rotate {
-	transform: rotate3d(0,0,0,0) !important;
+	transform: rotate3d(1,0,0,180deg);
+	animation: right 3s normal linear infinite;
 }
 
 .control-btns {
-	position: absolute;
+	position: relative;
 	bottom: 100px;
 }
 .control-btns button {
@@ -113,12 +230,24 @@ h5 {
 	width: 90%;
 	z-index: 1;
 }
-#blocked {
+.blocked2 {
+	display: block;
+	position: absolute;
+	top: -100%;
+	left: 0;
+	right: 0;
+	margin: 0 auto !important;
+	width: 90%;
+	z-index: 1;
+}
+#blocked, #savedM, #errorM {
 	font-size: 60px;
 }
 
 .blocked--active {
 	top: 50px;
+	position: fixed;
+	z-index: 4;
 }
 
 .name {
@@ -142,8 +271,61 @@ button {
 	margin: 0 5px;
 }
 
+label, input {
+	font-size: 3.5rem;
+}
+input {
+	width: 50%;
+	margin-left: 3rem;
+	border-radius: 15px !important;
+	border: #000 solid 1px;
+	padding: 1rem;
+}
+#pcant {
+	width: 6rem;
+	margin-right: 3rem;
+	text-align: center;
+}
+
+#SCplayers {
+	display: flex;
+	align-items: center;
+	padding: 2rem 0;
+}
+
+#colordiv {
+	position: relative;
+}
+
 /* #alertDiv {
 	position: fixed;
 	height: 100vh;
 	overflow: scroll;
 } */
+.ah {
+	height: 150vh !important;
+}
+@media (min-width: 480px) {
+	#two, #three {
+		/* float: left; */
+		width: max-content !important;
+		font-size: large !important;
+	}
+}
+
+@keyframes left {
+	from {
+		transform: rotate3d(1,0,0,180deg);
+	}
+	to {
+		transform: rotate3d(1,-360,0,180deg);
+	}
+}
+@keyframes right {
+	from {
+		transform: rotateZ(0deg);
+	}
+	to {
+		transform: rotateZ(180deg);
+	}
+}

@@ -1,25 +1,62 @@
-<button class="alert alert-warning" id="back"><i class="fas fa-home"></i> Volver</button>
+<div id="settingBox">
+    <div id="savedP" class="alert alert-success blocked2"><p id="savedM" class="bi-check2-circle"></p></div>
+    <div class="bBar">
+        <button id="exitS" class="bi-door-closed alert alert-danger"> Salir</button>
+    </div>
+    <h1>Ajustes</h1>
+    <br>
+    <br>
+    <div id="sMenu" class="s-items">
+        <nav>
+            <button id="players" class="btn btn-dark bi-people-fill"> Jugadores</button><br><br>
+            <button id="historyS" class="btn btn-dark bi-clock-history"> Historial</button>
+        </nav>
+    </div>
+    <div class="s-config">
+        <button id="backS" class="btn btn-primary bi-arrow-left-square"> Volver</button>
+        <br>
+        <div id="scMenu1" class="s-c-menu">
+            <h2>Ajuste de Jugadores</h2>
+            <br><br>
+            <div id="gameModeS"></div>
+            <hr>
+            <div id="SCplayers"></div>
+            <div id="errorMDiv" class="alert alert-danger darkS"><p id="errorM"></p></div>
+            <hr>
+            <div id="Splayers"></div>
+        </div>
+        <div id="scMenu2" class="s-c-menu">
+            <h2>Historial de jugadas</h2>
+            <br><br>
+            <button id="deleteSH" class="btn btn-danger bi-trash" onclick="deleteH()"> Borrar</button>
+            <hr>
+            <div id="history"></div>
+        </div>
+    </div>
+</div>
+<div class="navTop">
+    <button class="alert alert-warning" id="back"><i class="bi-house-fill"></i> Volver</button>
+    <button class="alert alert-warning" id="setting"><i class="bi-gear-fill"></i> Ajustes</button>
+</div>
 <br>
 <div class="alert alert-danger blocked"><p id="blocked"></p></div>
 <br><br>
 <br><br>
 <br><br>
     <div class="container-turn">
-        <div class="turn">
-            <h3>Turno de:</h3>
-            <h2 id="name" class="alert alert-primary"><img src="./assets/img/loading.gif" alt="•••"></h2>
-            <h5>Siguiente:</h4>
-            <h4 id="nextName" class="alert alert-info"><img src="./assets/img/loading.gif" alt="•••"></h4>
-        </div>
+        <div class="turn"></div>
         <figure class="grand__img">
-            <img src="./assets/img/direction.png" alt="Error. Ruta de imágen no disponible.">
+            <img id="direction" class="rotateNo" src="./assets/img/direction.png" alt="Error. Ruta de imágen no disponible.">
         </figure>
     </div>
     <br>
     <br>
     <div class="control-btns">
     </div>
-    <br><br>
-    <br>
+    <div id="colordiv">
+        <button class="btn btn-danger" id="color" value="red">Rojo</button>
+        <button class="btn btn-success"id="color" value="green">Verde</button>
+        <button class="btn btn-warning" id="color" value="yellow">Amarillo</button>
+        <button class="btn btn-primary" id="color" value="blue">Azul</button>
+    </div>
 </div>
-<script src="./assets/scripts/3players.js"></script>

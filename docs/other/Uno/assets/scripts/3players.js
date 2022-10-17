@@ -1,17 +1,40 @@
-namesP3 = [];
-namesP3.length = 3;
-pCant3 = namesP3.length-1;
+active = false;
 
 function threeP(button,ctrl) {
     if (button == "three") {
         setTimeout(() => {
+            document.querySelector(".turn").innerHTML = turn3;
             const textname = document.querySelector("#name");
             const right = document.querySelector("#right");
             const left = document.querySelector("#left");
             document.querySelector(".control-btns").innerHTML = ctrl;
             gameThree();
-			goBack(namesP3);
+            if (active == false) {
+                goBack(namesP3);
+                if (newg == false) {
+                    setnames();
+                }
+            } else {
+                p3cantl = namesP3.length;
+            }
+            setting(3);
+            if (menu == true) {
+                document.querySelector("#name").innerHTML = namesP3[posi];
+            }
+            colors();
         }, 1000);
+    }
+}
+function setnames() {
+    p3cantl = prompt("Número de Jugadores:");
+    if (p3cantl == 2) {
+        twoP("two",controlBtns);
+        gameMode = "two";
+    } else if (p3cantl){
+        namesP3.length = p3cantl;
+        names(namesP3);
+        pCant3 = p3cantl-1;
+        active = true;
     }
 }
 
@@ -43,9 +66,40 @@ function arrowleft() {
     right.innerHTML = '';
 }
 
+function next3() {
+    backName(namesP3[posi]);
+    if (namesP3[0]==undefined) {
+        posi = 0;
+        nextName(namesP3,pCant3);
+    } else {
+        if ($(".grand__img img").hasClass("rotate")) {
+            if (posi == 0) {
+                posi = pCant3;
+            } else {
+                posi = posi - 1;
+            }
+        } else {
+            if (posi == pCant3) {
+                posi = 0;
+            } else {
+                posi = posi + 1;
+            }
+        }
+        nextName(namesP3,pCant3);
+    }
+}
+
 function gameThree() {
     $("#change").click(function () {
-        $(".grand__img img").toggleClass("rotate");
+        backName(namesP3[posi]);
+        document.querySelector("#history").innerHTML += "<span>Turno de "+ namesP3[posi]+": Ha cambiado el sentido</span><br><hr>";
+        if ($(".grand__img img").hasClass("rotate")) {
+            $(".grand__img img").removeClass("rotate");
+            $(".grand__img img").addClass("rotateNo");
+        } else {
+            $(".grand__img img").removeClass("rotateNo");
+            $(".grand__img img").addClass("rotate");
+        }
         // rotate.classList.toggle("rotate");
         setTimeout(() => {
             if ($(".grand__img img").hasClass("rotate")) {
@@ -60,29 +114,12 @@ function gameThree() {
     });
     
     $("#next").click(function () {
-        if (namesP3[0]==undefined) {
-            names(namesP3);
-            posi = 0;
-            nextName(namesP3,pCant3);
-        } else {
-            if ($(".grand__img img").hasClass("rotate")) {
-                if (posi == 0) {
-                    posi = pCant3;
-                } else {
-                    posi = posi - 1;
-                }
-            } else {
-                if (posi == pCant3) {
-                    posi = 0;
-                } else {
-                    posi = posi + 1;
-                }
-            }
-            nextName(namesP3,pCant3);
-        }
+        document.querySelector("#history").innerHTML += "<span>Turno de "+ namesP3[posi]+"</span><br><hr>";
+        next3();
     }); 
     
     $("#ban").click(function () {
+        backName(nn);
         blocked(nn,namesP3[posi])
         if ($(".grand__img img").hasClass("rotate")) {
             if (posi == 0) {

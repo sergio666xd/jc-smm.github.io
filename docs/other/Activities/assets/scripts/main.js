@@ -34,13 +34,13 @@ function activity(time) {
     if (ntime<=t) {
         for (i = 0; i < activitiesA.length; i++) {
             if (time>=sAtime[i] && time<fAtime[i]) {
-                $('#activity').text(activitiesA[i]);
+                $('#activity').html(activitiesA[i]+"<br> ("+stime);
             }
         }
     } else if (ntime>t) {
         for (i = 0; i < activitiesP1.length; i++) {
             if (time>=sP1time[i] && time<fP1time[i]) {
-                $('#activity').text(activitiesP1[i]);
+                $('#activity').html(activitiesP1[i]+"<br> ("+stime);
             }
         }
     } else {
