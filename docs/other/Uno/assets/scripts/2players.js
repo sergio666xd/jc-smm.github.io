@@ -11,14 +11,23 @@ function twoP(button,ctrl) {
             const left = document.querySelector("#left");
             document.querySelector(".control-btns").innerHTML = ctrl;
             gameTwo();
+            gameMode = "two";
             if (active == false) {
-                goBack(namesP2);
                 if (newg == false) {
-                    names(namesP2);
+                    starting = true;
+                    start(namesP2,2);
+                } else {
+                    document.querySelector("#startplay").innerHTML = "";
+                    document.querySelector("#startplay").classList.add("darkS");
+                    setTimeout(() => {
+                        document.querySelector("#name").innerHTML = namesP2[posi];
+                        nameNext(pCant2,namesP2);
+                    }, 500);
                 }
-            } else { 
+            } else {
                 p2cantl = namesP2.length;
             }
+            goBack(namesP2);
             setting(2);
             if (menu == true) {
                 document.querySelector("#name").innerHTML = namesP2[posi];

@@ -7,6 +7,7 @@ upName = "";
 gameMode = "";
 activeC = false;
 menu = false;
+nombresa = "";
 
 loading = '<img src="./assets/img/loading.gif" alt="•••">';
 
@@ -17,14 +18,12 @@ turn3 = '<h5>Anterior:</h5> <h4 id="backName" class="alert alert-info">'+loading
 
 function nextColor(color,active) {
     if (active == true) {
-        setTimeout(() => {
-            document.querySelector("#history").innerHTML += "<span>Turno de "+ namesP3[posi]+": cambió el color a "+color+"</span><br><hr>";
-            if (gameMode == "two") {
-                next2();
-            } else if (gameMode == "three") {
-                next3();
-            }
-        }, 500);
+        document.querySelector("#history").innerHTML += "<span>Turno de "+ namesP3[posi]+": cambió el color a "+color+"</span><br><hr>";
+        if (gameMode == "two") {
+            next2();
+        } else if (gameMode == "three") {
+            next3();
+        }
     }
 
     return "", false;
@@ -34,47 +33,51 @@ function nextColor(color,active) {
 }
 
 function colors() {
-    $("#colordiv").delegate("button", "click", function () {
+    $("#colordiv").delegate("button", "click", function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
         document.querySelector("#name").innerHTML = loading;
         document.querySelector("#nextName").innerHTML = loading;
         if (gameMode == "three") {
             document.querySelector("#backName").innerHTML = loading;
         }
         nombreColor = $(this).attr("value");
+        if (nombreColor == "red") {
+            $("#grand").addClass("red");
+            $("#grand").removeClass("green");
+            $("#grand").removeClass("yellow");
+            $("#grand").removeClass("blue");
+            $("#direction").attr("src", "./assets/img/direction-r.png");
+            nombreColor = "rojo";
+            activeC = true;
+        } else if (nombreColor == "green") {
+            $("#grand").removeClass("red");
+            $("#grand").addClass("green");
+            $("#grand").removeClass("yellow");
+            $("#grand").removeClass("blue");
+            $("#direction").attr("src", "./assets/img/direction-g.png");
+            nombreColor = "verde";
+            activeC = true;
+        } else if (nombreColor == "yellow") {
+            $("#grand").removeClass("red");
+            $("#grand").removeClass("green");
+            $("#grand").addClass("yellow");
+            $("#grand").removeClass("blue");
+            $("#direction").attr("src", "./assets/img/direction-y.png");
+            nombreColor = "amarillo";
+            activeC = true;
+        } else if (nombreColor == "blue") {
+            $("#grand").removeClass("red");
+            $("#grand").removeClass("green");
+            $("#grand").removeClass("yellow");
+            $("#grand").addClass("blue");
+            $("#direction").attr("src", "./assets/img/direction-b.png");
+            nombreColor = "azul";
+            activeC = true;
+        }
         setTimeout(() => {
-            if (nombreColor == "red") {
-                $("#grand").addClass("red");
-                $("#grand").removeClass("green");
-                $("#grand").removeClass("yellow");
-                $("#grand").removeClass("blue");
-                $("#direction").attr("src", "./assets/img/direction-r.png")
-                activeC = true;
-            } else if (nombreColor == "green") {
-                $("#grand").removeClass("red");
-                $("#grand").addClass("green");
-                $("#grand").removeClass("yellow");
-                $("#grand").removeClass("blue");
-                $("#direction").attr("src", "./assets/img/direction-g.png")
-                activeC = true;
-            } else if (nombreColor == "yellow") {
-                $("#grand").removeClass("red");
-                $("#grand").removeClass("green");
-                $("#grand").addClass("yellow");
-                $("#grand").removeClass("blue");
-                $("#direction").attr("src", "./assets/img/direction-y.png")
-                activeC = true;
-            } else if (nombreColor == "blue") {
-                $("#grand").removeClass("red");
-                $("#grand").removeClass("green");
-                $("#grand").removeClass("yellow");
-                $("#grand").addClass("blue");
-                $("#direction").attr("src", "./assets/img/direction-b.png")
-                activeC = true;
-            }
-            setTimeout(() => {
-                nextColor(nombreColor,activeC);
-            }, 550);
-        }, 500);
+            nextColor(nombreColor,activeC);
+        }, 100);
     });
 }
 
@@ -89,10 +92,8 @@ $(document).ready(() => {
 		}
 		if (button == "two") {
             twoP(button,controlBtns);
-            gameMode = "two";
 		} else if (button == "three") {
             threeP(button,controlBtns);
-            gameMode = "three";
 		}
 	});
 	// two.addEventListener("click", function (){
@@ -101,6 +102,19 @@ $(document).ready(() => {
 	// three.addEventListener("click", function (){
 	// });
 });
+
+function start(game,n) {
+    document.querySelector("#startplay").innerHTML = '<div class="topplay"><button class="alert alert-warning" id="back"><i class="bi-house-fill"></i> Volver</button></div><br><div id="gameModeS"></div><hr><div id="SCplayers"></div><div id="errorMDiv" class="alert alert-danger darkS"><p id="errorM"></p></div><div id="Splayers"></div>';
+    if (gameMode == "two") {
+        document.querySelector("#gameModeS").innerHTML = "<h3>Modo de Juego: 1 vs 1</h3>"
+    } else if (gameMode == "three") {
+        document.querySelector("#gameModeS").innerHTML = "<h3>Modo de Juego: 3 o más</h3>"
+    }
+    arreglo = game;
+    arreglo.length = n;
+    activeSP = true;
+    showS1(arreglo);
+}
 
 function names(names) {
     for (i = 0; i < names.length; i++) {
@@ -150,15 +164,120 @@ function backName(player) {
     document.querySelector("#backName").innerHTML = player;
 }
 
-function goBack(names,cant) {
-	$("#back").click(function () {
-        newg = confirm("¿Deseas guardar los nombres actuales? \n" + names + " \n \n Si presionas aceptar no recarges esta pagina para que sigan guardados.");
+function surex(names) {
+    document.querySelector("#startplay").innerHTML = '<br><div id="gameModeS"><h3>¿Seguro que quieres salir?</h3></div><hr><div id="Splayers"><button id="surey" type="submit" class="bi-check-lg btn btn-success"> Salir</button><button id="suren" type="submit" class="bi-x-lg btn btn-danger"> Cancelar</button><br></div>';
+    $("#surey").click(function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        if (starting == true) {
+            surea(true)
+        } else if (starting == false) {
+            sureb(true)
+        }
+    });
+    $("#suren").click(function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        if (starting == true) {
+            surea(false)
+        } else if (starting == false) {
+            sureb(false)
+        }
+    });
+}
 
+function surea(sure) {
+    if (sure == true) {
+        starting = false;
         active = false;
-        posi = 0;
-        posiN = 0;
         $("#game").load("./assets/game/1select.html");
         $("body").addClass("main");
+    } else if (sure == false) {
+        start(arreglo,arreglo.length);
+        goBack(arreglo);
+    }
+}
+
+function sureb(sure) {
+    if (sure == true) {
+        nombresa = "";
+        starting = false;
+        active = false;
+        for (let i = 0; i < arreglo.length; i++) {
+            if (i == arreglo.length-1) {
+                nombresa += (arreglo[i]+".");
+            } else {
+                nombresa += (arreglo[i]+", ");
+            }
+        }
+        document.querySelector("#startplay").innerHTML = '<br><div id="gameModeS"><h3>¿Deseas guardar los nombres actuales?</h3></div><hr><div id="SCplayers"><h3 id="names2"><b>Nombres actuales:</b><br>'+nombresa+'</h3><br><br></div><div id="Splayers"><button id="surey" type="submit" class="bi-save btn btn-success"> Sí</button><button id="suren" type="submit" class="bi-x-lg btn btn-danger"> No</button></div>';
+        $("#surey").click(function (e) {
+            newg = true;
+            active = false;
+            posi = 0;
+            posiN = 0;
+            $("#game").load("./assets/game/1select.html");
+            $("body").addClass("main");
+            $("#grand").removeClass("red");
+            $("#grand").removeClass("green");
+            $("#grand").removeClass("yellow");
+            $("#grand").removeClass("blue");
+        });
+        $("#suren").click(function (e) {
+            newg = false;
+            namesP2 = [];
+            namesP3 = [];
+            // for (i = 0; i < namesP3.length; i++) {
+            //     namesP3[i] = undefined;
+            // }
+            active = false;
+            posi = 0;
+            posiN = 0;
+            $("#game").load("./assets/game/1select.html");
+            $("body").addClass("main");
+            $("#grand").removeClass("red");
+            $("#grand").removeClass("green");
+            $("#grand").removeClass("yellow");
+            $("#grand").removeClass("blue");
+        });
+    } else if (sure == false) {
+        document.querySelector("#startplay").innerHTML = "";
+        document.querySelector("#startplay").classList.add("darkS");
+    }
+}
+
+function goBack(names) {
+	$("#back").click(function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        if (starting == true) {
+            surex(names);
+            // sure = confirm("¿Seguro de que quieres salir?");
+            // if (sure == true) {
+                //     starting = false;
+                //     active = false;
+                //     $("#game").load("./assets/game/1select.html");
+                //     $("body").addClass("main");
+                // }
+            } else if (starting == false) {
+            document.querySelector("#startplay").classList.remove("darkS");
+            surex(names)
+            // sure = confirm("¿Seguro de que quieres salir?");
+
+            // if (sure == true) {
+            //     newg = confirm("¿Deseas guardar los nombres actuales? \n" + names + " \n \n Si presionas aceptar no recarges esta pagina para que sigan guardados.");
+        
+            //     active = false;
+            //     posi = 0;
+            //     posiN = 0;
+            //     $("#game").load("./assets/game/1select.html");
+            //     $("body").addClass("main");
+            //     $("#grand").removeClass("red");
+            //     $("#grand").removeClass("green");
+            //     $("#grand").removeClass("yellow");
+            //     $("#grand").removeClass("blue");
+            // }
+        }
 	})
 }
 
@@ -252,7 +371,6 @@ function upPCANT3(){
             $("#errorMDiv").addClass("darkS");
             document.querySelector("#gameModeS").innerHTML = "<h3>Modo de Juego: 1 vs 1</h3>"
             twoP("two",controlBtns);
-            gameMode = "two";
             arreglo = namesP2;
             showPlayers(arreglo);
             activeSP = true;
@@ -260,7 +378,6 @@ function upPCANT3(){
             if (gameMode == "two") {
                 document.querySelector("#gameModeS").innerHTML = "<h3>Modo de Juego: 3 o más</h3>"
                 threeP("three",controlBtns);
-                gameMode = "three";
             }
             namesP3.length = pcantl;
             pCant3 = pcantl-1;
@@ -281,7 +398,7 @@ function upPCANT3(){
 }
 
 function deleteH() {
-    document.querySelector("#history").innerHTML = "";
+    document.querySelector("#history").innerHTML = "<span> Aún no hay movimientos registrados.</span><br><hr>";
 }
 
 function showS1(arreglo) {
@@ -291,8 +408,12 @@ function showS1(arreglo) {
 }
 
 function upNP(arreglo2) {
-    arreglo2 = arreglo2+1;
-    arrowsUPLOAD(arreglo2);
+    if (arreglo2 == 0) {
+        arrowsUPLOAD(2);
+    } else if (arreglo2 >= 1) {
+        arreglo2 = arreglo2+1;
+        arrowsUPLOAD(arreglo2);
+    }
     $("#errorMDiv").addClass("darkS");
     return false;
 }
@@ -312,19 +433,18 @@ function arrowsUPLOAD(newNumber) {
     if (gameMode == "two") {
         if (newNumber >= 3) {
             namesP3.length = newNumber;
-            document.querySelector("#gameModeS").innerHTML = "<h3>Modo de Juego: 3 o más</h3>"
+            document.querySelector("#Splayers").innerHTML = '<div class="loadDiv"><center><h3>Cargando...</h3><br><img class="load" src="./assets/img/loading.gif" alt="•••"></center></div>';
             threeP("three",controlBtns);
-            gameMode = "three";
-            showS1(namesP3);
+            document.querySelector("#gameModeS").innerHTML = "<h3>Modo de Juego: 3 o más</h3>"
         }
     } else if (gameMode == "three") {
         if (newNumber == 2) {
-            document.querySelector("#gameModeS").innerHTML = "<h3>Modo de Juego: 1 vs 1</h3>"
+            document.querySelector("#Splayers").innerHTML = '<div class="loadDiv"><center><h3>Cargando...</h3><br><img class="load" src="./assets/img/loading.gif" alt="•••"></center></div>';
             twoP("two",controlBtns);
-            gameMode = "two";
-            showS1(namesP2);
+            document.querySelector("#gameModeS").innerHTML = "<h3>Modo de Juego: 1 vs 1</h3>"
         } else if (newNumber >= 3) {
             namesP3.length = newNumber;
+            pCant3 = newNumber-1;
             showS1(namesP3);
             document.querySelector("#nextName").innerHTML = '<img src="./assets/img/loading.gif" alt="•••">';
             setTimeout(() => {
@@ -335,10 +455,9 @@ function arrowsUPLOAD(newNumber) {
 }
 
 function showNPlayers(arreglo) {
-    document.querySelector("#SCplayers").innerHTML = '<div class="loadDiv"><center><h3>Cargando...</h3><br><img class="load" src="./assets/img/loading.gif" alt="•••"></center></div><hr>';
     setTimeout(() => {
         document.querySelector("#SCplayers").innerHTML = '<label for="nplayers">N° Jugadores: </label><input id="pcant" type="number" name="nplayers" value="'+arreglo.length+'"><button id="saveS1" type="submit" class="bi-arrow-up-short btn" onclick="upNP('+arreglo.length+')"></button><button id="saveS1" type="submit" class="bi-arrow-down-short btn" onclick="downNP('+arreglo.length+')"><button id="saveS1" type="submit" class="bi-save btn btn-success saveS" onclick="upPCANT3()"> Guardar</button><br>';
-    }, 300);
+    }, 100);
 }
 
 
@@ -355,8 +474,14 @@ function showPlayers(arreglo) {
                     document.querySelector("#Splayers").innerHTML += '<br><label for="p'+i+'">Jugador '+(i+1)+': </label><input name="player" id="p'+i+'" type="text" value="'+arreglo[i]+'"><br>';
                 }
                 if (i == (arreglo.length-1)) {
-                    document.querySelector("#Splayers").innerHTML += '<br><br><button id="saveS2" class="bi-arrow-repeat btn btn-dark" onclick="showS1(arreglo)"> Reestablecer</button><button id="saveS2" class="bi-save btn btn-success saveS" onclick="upPlayers(arreglo)"> Guardar</button>'
-                    activeSP = false;
+                    if (starting == true & menu == false) {
+                        document.querySelector("#Splayers").innerHTML += '<br><br><button id="saveS2" class="bi-arrow-repeat btn btn-dark" onclick="showS1(arreglo)"> Reestablecer</button><button id="saveS2" class="bi-play btn btn-warning saveS" onclick="upPlayers(arreglo)"> Jugar!</button>'
+                        activeSP = false;
+                        
+                    } else {
+                        document.querySelector("#Splayers").innerHTML += '<br><br><button id="saveS2" class="bi-arrow-repeat btn btn-dark" onclick="showS1(arreglo)"> Reestablecer</button><button id="saveS2" class="bi-save btn btn-success saveS" onclick="upPlayers(arreglo)"> Guardar</button>'
+                        activeSP = false;
+                    }
                 }
             }
         }
@@ -368,12 +493,32 @@ function upPlayers(arreglo) {
         upName = "p"+i;
         arreglo[i] = document.getElementById(upName).value;
     }
-    namesP3 = arreglo;
-    document.querySelector("#savedM").innerHTML = ' Nombres guardados correctamente';
-    document.querySelector("#savedP").classList.add("blocked--active");
-	setTimeout(() => {
-		document.querySelector("#savedP").classList.remove("blocked--active");
-	}, 3000);
+    if (gameMode == "two") {
+        namesP2 = arreglo;
+    } else if (gameMode == "three") {
+        pCant3 = arreglo.length-1;
+        namesP3 = arreglo;
+    }
+    if (starting == true) {
+        starting = false;
+        document.querySelector("#startplay").innerHTML = "";
+        document.querySelector("#startplay").classList.add("darkS");
+        setTimeout(() => {
+            document.querySelector("#name").innerHTML = arreglo[posi];
+            nameNext(arreglo.length-1,arreglo);
+            if (gameMode == "two") {
+                goBack(namesP2);
+            } else if (gameMode == "three") {
+                goBack(namesP3);
+            }
+        }, 500);
+    } else {
+        document.querySelector("#savedM").innerHTML = ' Nombres guardados correctamente';
+        document.querySelector("#savedP").classList.add("blocked--active");
+        setTimeout(() => {
+            document.querySelector("#savedP").classList.remove("blocked--active");
+        }, 3000);
+    }
 }
 
 function blocked(nextName,actualName) {

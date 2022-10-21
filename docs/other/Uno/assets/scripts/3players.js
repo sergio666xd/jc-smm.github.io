@@ -9,17 +9,29 @@ function threeP(button,ctrl) {
             const left = document.querySelector("#left");
             document.querySelector(".control-btns").innerHTML = ctrl;
             gameThree();
+            gameMode = "three";
             if (active == false) {
-                goBack(namesP3);
                 if (newg == false) {
-                    setnames();
+                    starting = true;
+                    start(namesP3,3);
+                } else {
+                    document.querySelector("#startplay").innerHTML = "";
+                    document.querySelector("#startplay").classList.add("darkS");
+                    setTimeout(() => {
+                        document.querySelector("#name").innerHTML = namesP3[posi];
+                        nameNext(pCant3,namesP3);
+                    }, 500);
                 }
             } else {
                 p3cantl = namesP3.length;
+                document.querySelector("#startplay").innerHTML = "";
+                document.querySelector("#startplay").classList.add("darkS");
             }
+            goBack(namesP3);
             setting(3);
             if (menu == true) {
                 document.querySelector("#name").innerHTML = namesP3[posi];
+                nameNext(pCant3,namesP3);
             }
             colors();
         }, 1000);
