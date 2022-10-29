@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input {
+    width: 2rem;
+}
+input.names {
+    width: min-content;
+}
+
+#fix {
+    display: flex;
+    flex-wrap: wrap;
+}
+#fix table {
+    margin: 1rem;
+}
+
+table {
+    border-spacing: 0;
+    border: 1px solid;
+    text-align: center;
+}
+
+p {
+    margin: 10px;
+}
+
+td,th {
+    border: .1px solid;
+    padding: 0 0.5rem;
+}
+
+.gold {
+    background-color: rgb(211, 190, 73);
+}
+.silver {
+    background-color: silver;
+}
+.bronze {
+    background-color: rgb(128, 90, 81);
+    color: #fff;
+}

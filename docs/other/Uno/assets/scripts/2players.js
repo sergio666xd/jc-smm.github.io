@@ -1,9 +1,6 @@
-namesP2 = [];
-namesP2.length = 2;
-pCant2 = namesP2.length-1;
-
 function twoP(button,ctrl) {
     if (button == "two") {
+        gameMode = "two";
         setTimeout(() => {
             document.querySelector(".turn").innerHTML = turn2;
             const textname = document.querySelector("#name");
@@ -11,28 +8,22 @@ function twoP(button,ctrl) {
             const left = document.querySelector("#left");
             document.querySelector(".control-btns").innerHTML = ctrl;
             gameTwo();
-            gameMode = "two";
-            if (active == false) {
-                if (newg == false) {
-                    starting = true;
-                    start(namesP2,2);
-                } else {
-                    document.querySelector("#startplay").innerHTML = "";
-                    document.querySelector("#startplay").classList.add("darkS");
-                    setTimeout(() => {
-                        document.querySelector("#name").innerHTML = namesP2[posi];
-                        nameNext(pCant2,namesP2);
-                    }, 500);
-                }
+            if (newg == true) {
+                starting = true;
+                start(namesP2,2);
             } else {
-                p2cantl = namesP2.length;
+                document.querySelector("#startplay").innerHTML = "";
+                document.querySelector("#startplay").classList.add("darkS");
+                setTimeout(() => {
+                    document.querySelector("#name").innerHTML = namesP2[posi];
+                    nameNext(pCant2,namesP2);
+                }, 500);
             }
             goBack(namesP2);
             setting(2);
             if (menu == true) {
                 document.querySelector("#name").innerHTML = namesP2[posi];
             }
-            $(".turn")
             colors();
         }, 1000);
     }

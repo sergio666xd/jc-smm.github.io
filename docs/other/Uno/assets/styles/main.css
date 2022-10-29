@@ -157,11 +157,11 @@ img.load {
 	position: absolute;
 	border-radius: 50%;
 	overflow: hidden;
-	padding-bottom: 5rem;
 	background-image: url(../img/uno.png);
 	background-size: cover;
-	/* margin-bottom: 2rem; */
-	border-color: #000;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
 	color: #fff;
 	z-index: 1;
 }

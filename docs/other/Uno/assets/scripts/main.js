@@ -1,6 +1,10 @@
 posi = 0;
-newg = false;
+newg = true;
 namesP3 = [];
+namesP2 = [];
+namesP2.length = 2;
+pCant2 = namesP2.length-1;
+p2cantl = namesP2.length;
 nombreColor = "";
 activeSP = false;
 upName = "";
@@ -8,6 +12,7 @@ gameMode = "";
 activeC = false;
 menu = false;
 nombresa = "";
+active = false;
 
 loading = '<img src="./assets/img/loading.gif" alt="•••">';
 
@@ -86,6 +91,7 @@ $(document).ready(() => {
     $("body").addClass("main");
 	$("div").delegate("button", "click", function () {
         $("body").removeClass("main");
+        active = true;
 		button = $(this).attr("id");
 		if (button=="two"||button=="three") {
             $('#game').load('./assets/game/play.html');
@@ -210,10 +216,10 @@ function sureb(sure) {
                 nombresa += (arreglo[i]+", ");
             }
         }
-        document.querySelector("#startplay").innerHTML = '<br><div id="gameModeS"><h3>¿Deseas guardar los nombres actuales?</h3></div><hr><div id="SCplayers"><h3 id="names2"><b>Nombres actuales:</b><br>'+nombresa+'</h3><br><br></div><div id="Splayers"><button id="surey" type="submit" class="bi-save btn btn-success"> Sí</button><button id="suren" type="submit" class="bi-x-lg btn btn-danger"> No</button></div>';
+        document.querySelector("#startplay").innerHTML = '<br><div id="gameModeS"><h3>¿Deseas guardar los nombres actuales?</h3></div><hr><div id="SCplayers"><h3 id="names2"><b>Nombres actuales:</b><br>'+nombresa+'</h3><br><br></div><div id="Splayers"><button id="surey" type="submit" class="bi-save btn btn-success"> Guardar</button><button id="suren" type="submit" class="bi-x-lg btn btn-danger"> No guardar</button></div>';
         $("#surey").click(function (e) {
             newg = true;
-            active = false;
+            active = true;
             posi = 0;
             posiN = 0;
             $("#game").load("./assets/game/1select.html");
@@ -408,14 +414,13 @@ function showS1(arreglo) {
 }
 
 function upNP(arreglo2) {
+    $("#errorMDiv").addClass("darkS");
     if (arreglo2 == 0) {
         arrowsUPLOAD(2);
     } else if (arreglo2 >= 1) {
         arreglo2 = arreglo2+1;
         arrowsUPLOAD(arreglo2);
     }
-    $("#errorMDiv").addClass("darkS");
-    return false;
 }
 function downNP(arreglo2) {
     if (arreglo2 == 2) {
@@ -426,7 +431,6 @@ function downNP(arreglo2) {
         arreglo2 = arreglo2-1;
         arrowsUPLOAD(arreglo2);
     }
-    return false;
 }
 
 function arrowsUPLOAD(newNumber) {
@@ -436,12 +440,14 @@ function arrowsUPLOAD(newNumber) {
             document.querySelector("#Splayers").innerHTML = '<div class="loadDiv"><center><h3>Cargando...</h3><br><img class="load" src="./assets/img/loading.gif" alt="•••"></center></div>';
             threeP("three",controlBtns);
             document.querySelector("#gameModeS").innerHTML = "<h3>Modo de Juego: 3 o más</h3>"
+            showS1(namesP3);
         }
     } else if (gameMode == "three") {
         if (newNumber == 2) {
             document.querySelector("#Splayers").innerHTML = '<div class="loadDiv"><center><h3>Cargando...</h3><br><img class="load" src="./assets/img/loading.gif" alt="•••"></center></div>';
             twoP("two",controlBtns);
             document.querySelector("#gameModeS").innerHTML = "<h3>Modo de Juego: 1 vs 1</h3>"
+            showS1(namesP2);
         } else if (newNumber >= 3) {
             namesP3.length = newNumber;
             pCant3 = newNumber-1;
@@ -501,6 +507,7 @@ function upPlayers(arreglo) {
     }
     if (starting == true) {
         starting = false;
+        newg = false;
         document.querySelector("#startplay").innerHTML = "";
         document.querySelector("#startplay").classList.add("darkS");
         setTimeout(() => {
@@ -523,7 +530,7 @@ function upPlayers(arreglo) {
 
 function blocked(nextName,actualName) {
 	document.querySelector("#blocked").innerHTML = '¡<span class="name"><b>' + nextName + '</b></span> ha sido bloquead@ por <span class="name"><b>' + actualName + '</b></span>!';
-	document.querySelector("#history").innerHTML += '<span> Turno de ' + actualName + ': Ha sido bloqueado a ' + nextName + '</span><br><hr>';
+	document.querySelector("#history").innerHTML += '<span> Turno de ' + actualName + ': Ha bloqueado a ' + nextName + '</span><br><hr>';
 	document.querySelector(".blocked").classList.add("blocked--active");
 	setTimeout(() => {
 		document.querySelector(".blocked").classList.remove("blocked--active");
