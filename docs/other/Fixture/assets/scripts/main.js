@@ -6,6 +6,16 @@ impar = false;
 var teams = [];
 a = 0;
 
+snum = false;
+sna = false;
+spg = false;
+spe = false;
+spp = false;
+sgf = false;
+sgc = false;
+spts = false;
+sps = false;
+
 fixt1 = '<table><thead><tr><th>eq1</th><th>eq2</th><th>r1</th><th>r2</th></tr></thead><tbody id="fixturetable';
 fixt2 = '"></tbody></table>';
 
@@ -37,29 +47,36 @@ function autoset(n) {
 }
 
 function position() {
-    positionx = [];
-    positionx.length = teams.length;
-    for (p = 0; p < teams.length; p++) {
-        for (p2 = 0; p2 < teams.length; p2++) {
-            if (teams[p2].pts > teams[p].pts) {
-                p = p2;
-                major = p2;
-            } else {
-                if (p2 == teams.length-1) {
-                    positionx[0] = p;
-                    major = p;
-                    p = teams.length;
+    teams.sort((a,b) => {
+        if (b.pts == a.pts) {
+            if (b.gf < a.gf || b.gf < a.gf) {
+                if (b.gf < a.gf) {
+                    res = b.gf - a.gf
+                    return res;
+                } else if (b.gf > a.gf) {
+                    res = a.gf - b.gf;
+                    return res;
+                }
+            } else if (b.gf == a.gf) {
+                if (b.gc > a.gc) {
+                    res = b.gc - a.gc;
+                    return res;
+                } else if (b.gc < a.gc) {
+                    res = a.gc - b.gc;
+                    return res;
+                } else {
+                    res = b.pts - a.pts;
+                    return res;
                 }
             }
+        } else {
+            res = b.pts - a.pts;
+            return res;
         }
+    });
+    for (let i = 0; i < neq; i++) {
+        teams[i].ps = (i+1);
     }
-    setTimeout(() => {
-        console.log(major);
-        for (let p3 = 0; p3 < teams.length; p3++) {
-            teams[p3].ps = positionx[p3];
-        }
-        indexar(teams.length);
-    }, 500);
 }
 
 function Team(number,name,pg,pe,pp,gf,gc,pts,ps) {
@@ -82,6 +99,10 @@ function nextPhase() {
         table.innerHTML = "";
         fixes.innerHTML = "";
         autoset(neq);
+        for (let i = 0; i < neq; i++) {
+            teams[i].pts = (teams[i].pg*3)+teams[i].pe;
+        }
+        position();
         check=0;
         for (i = 0; i < mid; i++) {
             check = check+1;
@@ -211,56 +232,34 @@ function results(table) {
             if (leftresult > rightresult) {
                 teams[leftteam].pg = teams[leftteam].pg + 1;
                 teams[rightteam].pp = teams[rightteam].pp + 1;
+                document.getElementById("cl"+table+i).classList.add("winner");
             } else if (rightresult > leftresult) {
                 teams[rightteam].pg = teams[rightteam].pg + 1;
                 teams[leftteam].pp = teams[leftteam].pp + 1;
+                document.getElementById("cr"+table+i).classList.add("winner");
             } else if (leftresult == rightresult) {
                 teams[leftteam].pe = teams[leftteam].pe + 1;
                 teams[rightteam].pe = teams[rightteam].pe + 1;
+            } else if (leftresult == NaN || rightresult == NaN) {
+                
             }
             teams[leftteam].gf = teams[leftteam].gf + leftresult;
             teams[rightteam].gf = teams[rightteam].gf + rightresult;
             teams[leftteam].gc = teams[leftteam].gc + rightresult;
             teams[rightteam].gc = teams[rightteam].gc + leftresult;
-    
+            
             document.getElementById("rl"+table+i).innerHTML = leftresult;
             document.getElementById("rr"+table+i).innerHTML = rightresult;
         }
     }
+    for (let i = 0; i < neq; i++) {
+        teams[i].pts = (teams[i].pg*3)+teams[i].pe;
+    }
+    position();
     indexar(neq);
 }
 
 function indexar(n) {
-    for (let i = 0; i < n; i++) {
-        teams[i].pts = (teams[i].pg*3)+teams[i].pe;
-    }
-    teams.sort((a,b) => {
-        if (b.pts == a.pts) {
-            if (b.gf < a.gf || b.gf < a.gf) {
-                if (b.gf < a.gf) {
-                    res = b.gf - a.gf
-                    return res;
-                } else if (b.gf > a.gf) {
-                    res = a.gf - b.gf;
-                    return res;
-                }
-            } else if (b.gf == a.gf) {
-                if (b.gc > a.gc) {
-                    res = b.gc - a.gc;
-                    return res;
-                } else if (b.gc < a.gc) {
-                    res = a.gc - b.gc;
-                    return res;
-                } else {
-                    res = b.pts - a.pts;
-                    return res;
-                }
-            }
-        } else {
-            res = b.pts - a.pts;
-            return res;
-        }
-    });
     table.innerHTML = loading;
     setTimeout(() => {
         table.innerHTML = "";
@@ -274,14 +273,117 @@ function indexar(n) {
             } else {
                 pstr = ""
             }
-            table.innerHTML += '<tr class="'+pstr+'"><th>' + teams[i].number + '</th><th><input id="n'+i+'" class="names '+pstr+'" type="text" value="' + teams[i].name + '"></th><td>' + teams[i].pg + '</td><td>' + teams[i].pe + '</td><td>' + teams[i].pp + '</td><td>' + teams[i].gf + '</td><td>' + teams[i].gc + '</td><td>' + teams[i].pts + '</td><td>' + (i+1) + '</td></tr>';
+            table.innerHTML += '<tr class="'+pstr+'"><th>' + teams[i].number + '</th><th id="name'+i+'">' + teams[i].name + '<td>' + teams[i].pg + '</td><td>' + teams[i].pe + '</td><td>' + teams[i].pp + '</td><td>' + teams[i].gf + '</td><td>' + teams[i].gc + '</td><td>' + teams[i].pts + '</td><td>' + teams[i].ps + '</td></tr>';
         }
-        table.innerHTML += '<button onclick="savenames('+n+')">Save Names</button>';
     }, 1000);
+}
+
+function changeNames(n) {
+    for (let i = 0; i < n; i++) {
+        document.querySelector("#name"+i).innerHTML = '<input id="n'+i+'" class="names" type="text" value="'+teams[i].name+'">';
+    }
+    document.querySelector("#btnNames").innerHTML = "Guardar Nombres";
+    $("#btnNames").attr("onclick", "savenames(neq)")
 }
 
 function savenames(n) {
     for (let i = 0; i < n; i++) {
         teams[i].name = document.getElementById("n"+i).value;
     }
+    for (let i = 0; i < n; i++) {
+        document.querySelector("#name"+i).innerHTML = teams[i].name;
+    }
+    document.querySelector("#btnNames").innerHTML = "Cambiar Nombres";
+    $("#btnNames").attr("onclick", "changeNames(neq)")
+}
+
+function sortNUMBER() {
+    if (snum == true) {
+        teams.sort((a,b) => (a.number - b.number));
+        snum = false;
+    } else {
+        teams.sort((a,b) => (b.number - a.number));
+        snum = true;
+    }
+    indexar(neq);
+}
+function sortNAME() {
+    if (sna == true) {
+        teams.sort((a,b) => (a.name - b.name));
+        sna = false;
+    } else {
+        teams.sort((a,b) => (b.name - a.name));
+        sna = true;
+    }
+    indexar(neq);
+}
+function sortPG() {
+    if (spg == true) {
+        teams.sort((a,b) => (a.pg - b.pg));
+        spg = false;
+    } else {
+        teams.sort((a,b) => (b.pg - a.pg));
+        spg = true;
+    }
+    indexar(neq);
+}
+function sortPE() {
+    if (spe == true) {
+        teams.sort((a,b) => (a.pe - b.pe));
+        spe = false;
+    } else {
+        teams.sort((a,b) => (b.pe - a.pe));
+        spe = true;
+    }
+    indexar(neq);
+}
+function sortPP() {
+    if (spp == true) {
+        teams.sort((a,b) => (a.pp - b.pp));
+        spp = false;
+    } else {
+        teams.sort((a,b) => (b.pp - a.pp));
+        spp = true;
+    }
+    indexar(neq);
+}
+function sortGF() {
+    if (sgf == true) {
+        teams.sort((a,b) => (a.gf - b.gf));
+        sgf = false;
+    } else {
+        teams.sort((a,b) => (b.gf - a.gf));
+        sgf = true;
+    }
+    indexar(neq);
+}
+function sortGC() {
+    if (sgc == true) {
+        teams.sort((a,b) => (a.gc - b.gc));
+        sgc = false;
+    } else {
+        teams.sort((a,b) => (b.gc - a.gc));
+        sgc = true;
+    }
+    indexar(neq);
+}
+function sortPTS() {
+    if (spts == true) {
+        teams.sort((a,b) => (a.pts - b.pts));
+        spts = false;
+    } else {
+        teams.sort((a,b) => (b.pts - a.pts));
+        spts = true;
+    }
+    indexar(neq);
+}
+function sortPS() {
+    if (sps == true) {
+        teams.sort((a,b) => (a.ps - b.ps));
+        sps = false;
+    } else {
+        teams.sort((a,b) => (b.ps - a.ps));
+        sps = true;
+    }
+    indexar(neq);
 }

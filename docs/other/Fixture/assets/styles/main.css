@@ -6,14 +6,16 @@
 
 input {
     width: 2rem;
+    border: none;
 }
 input.names {
-    width: min-content;
+    width: 100%;
 }
 
 #fix {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 #fix table {
     margin: 1rem;
@@ -25,13 +27,20 @@ table {
     text-align: center;
 }
 
+tr#theadn th {
+    cursor: pointer;
+}
+
 p {
     margin: 10px;
 }
 
 td,th {
     border: .1px solid;
-    padding: 0 0.5rem;
+}
+
+#positiontable td, #positiontable td {
+    padding: 0 0.1rem;
 }
 
 .gold {
@@ -43,4 +52,12 @@ td,th {
 .bronze {
     background-color: rgb(128, 90, 81);
     color: #fff;
+}
+
+.positiontable {
+    width: 100%;
+}
+
+.winner {
+    background-color: green;
 }

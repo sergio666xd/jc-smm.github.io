@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=480px, initial-scale=1.0">
+    <meta name="viewport" content="width=480, initial-scale=1.0">
 	<title>Fixture</title>
 	<link href="/npm/bootstrap-5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="/npm/icons-1.5.0/font/bootstrap-icons.css">
@@ -19,18 +19,19 @@
 		<hr>	
 		<div id="fix"></div>
 		<hr>
-		<table>
+		<button id="btnNames" onclick="changeNames(neq)">Cambiar nombres</button>
+		<table class="positiontable">
 			<thead>
-				<tr>
-					<th>N°:</th>
-					<th>Nombre:</th>
-					<th>PG:</th>
-					<th>PE:</th>
-					<th>PP:</th>
-					<th>GF:</th>
-					<th>GC:</th>
-					<th>Pts:</th>
-					<th>Posición:</th>
+				<tr id="theadn">
+					<th onclick="sortNUMBER()">N°:</th>
+					<th onclick="sortNAME()">Nombre:</th>
+					<th onclick="sortPG()">PG:</th>
+					<th onclick="sortPE()">PE:</th>
+					<th onclick="sortPP()">PP:</th>
+					<th onclick="sortGF()">GF:</th>
+					<th onclick="sortGC()">GC:</th>
+					<th onclick="sortPTS()">Pts:</th>
+					<th onclick="sortPS()">Posición:</th>
 				</tr>
 			</thead>
 			<tbody id="tabla"></tbody>
