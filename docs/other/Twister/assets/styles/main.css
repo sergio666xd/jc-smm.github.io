@@ -1,0 +1,44 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	transition: all 1s ease-in-out;
+}
+
+.notification {
+	display: block;
+	position: absolute;
+	top: -100%;
+	left: 0;
+	right: 0;
+	margin: 0 auto !important;
+	width: 90%;
+	z-index: 1;
+}
+.blocked2 {
+	display: block;
+	position: absolute;
+	top: -100%;
+	left: 0;
+	right: 0;
+	margin: 0 auto !important;
+	width: 90%;
+	z-index: 1;
+}
+#blocked, #savedM, #errorM {
+	font-size: 60px;
+}
+
+.notification--active {
+	top: 50px;
+	position: fixed;
+	z-index: 4;
+}
+
+tr{
+	border: 1px solid #000;
+}
+td {
+	font-size: 300%;
+	padding: 0.5rem;
+}

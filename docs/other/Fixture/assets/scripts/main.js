@@ -4,6 +4,8 @@ fixes = document.querySelector("#fix");
 fixtable = document.querySelector("#fixturetable");
 impar = false;
 var teams = [];
+var resultsT = [];
+change = false;
 a = 0;
 
 snum = false;
@@ -89,6 +91,15 @@ function Team(number,name,pg,pe,pp,gf,gc,pts,ps) {
     this.gc = gc;
     this.pts = pts;
     this.ps = ps;
+}
+
+function resultsARR(fix, row, teamA, teamB, rA, rB) {
+    this.fix = fix;
+    this.row = row;
+    this.teamA = teamA;
+    this.teamB = teamB;
+    this.rA = rA;
+    this.rB = rB;
 }
 
 function nextPhase() {
@@ -218,40 +229,139 @@ function parfx() {
     indexar(neq);
 }
 
+function editResults(table) {
+    document.querySelector("#btnst"+table).innerHTML = '<td></td><td></td><td></td><td><button onclick="results('+table+')">Save</button></td>';
+    tempresult = resultsT.filter(resultsT => resultsT.fix == table)
+    for (let i = 0; i < mid; i++) {
+        if (impar == true & i==0) {
+        } else {
+            document.querySelector("#rl"+table+i).innerHTML = '<input id="r'+table+i+'l" type="number" value="'+tempresult[i].rA+'">'
+            document.querySelector("#rr"+table+i).innerHTML = '<input id="r'+table+i+'r" type="number" value="'+tempresult[i].rB+'">'
+        }
+    }
+    change = true;
+}
+
 function results(table) {
-    document.querySelector("#btnst"+table).innerHTML = "";
+    document.querySelector("#btnst"+table).innerHTML = '<td></td><td></td><td></td><td><button onclick="editResults('+table+')">Edit</button></td>';
     teams.sort((a,b) => (a.number - b.number));
     for (let i = 0; i < mid; i++) {
         if (impar == true & i==0) {
         } else {
+            posireal = mid*table+i;
             leftteam = parseInt(document.getElementById("cl"+table+i).outerText)-1;
             rightteam = parseInt(document.getElementById("cr"+table+i).outerText)-1;
-            leftresult = parseInt(document.getElementById("r"+table+i+"l").value);
-            rightresult = parseInt(document.getElementById("r"+table+i+"r").value);
+            if (document.getElementById("r"+table+i+"l").value == '') {
+                leftresult = undefined;
+            } else {
+                leftresultemp = document.getElementById("r"+table+i+"l").value;
+                leftresult = parseInt(leftresultemp);
+            }
+            if (document.getElementById("r"+table+i+"r").value == '') {
+                rightresult = undefined;
+            } else {
+                rightresulttemp = document.getElementById("r"+table+i+"r").value;
+                rightresult = parseInt(rightresulttemp);
+            }
             
             if (leftresult > rightresult) {
-                teams[leftteam].pg = teams[leftteam].pg + 1;
-                teams[rightteam].pp = teams[rightteam].pp + 1;
+                if (change == true) {
+                    if (resultsT[posireal].rA < resultsT[posireal].rB) {
+                        teams[rightteam].pg = teams[rightteam].pg - 1;
+                        teams[leftteam].pp = teams[leftteam].pp - 1;
+                        teams[leftteam].pg = teams[leftteam].pg + 1;
+                        teams[rightteam].pp = teams[rightteam].pp + 1;
+                    } else if (resultsT[posireal].rA == resultsT[posireal].rB) {
+                        teams[rightteam].pe = teams[rightteam].pe - 1;
+                        teams[leftteam].pe = teams[leftteam].pe - 1;
+                        teams[leftteam].pg = teams[leftteam].pg + 1;
+                        teams[rightteam].pp = teams[rightteam].pp + 1;
+                    }
+                } else {
+                    teams[leftteam].pg = teams[leftteam].pg + 1;
+                    teams[rightteam].pp = teams[rightteam].pp + 1;
+                }
                 document.getElementById("cl"+table+i).classList.add("winner");
+                document.getElementById("cr"+table+i).classList.remove("winner");
             } else if (rightresult > leftresult) {
+                if (change == true) {
+                    if (resultsT[posireal].rB < resultsT[posireal].rA) {
+                        teams[leftteam].pg = teams[leftteam].pg - 1;
+                        teams[rightteam].pp = teams[rightteam].pp - 1;
+                        teams[rightteam].pg = teams[rightteam].pg + 1;
+                        teams[leftteam].pp = teams[leftteam].pp + 1;
+                    } else if (resultsT[posireal].rA == resultsT[posireal].rB) {
+                        teams[leftteam].pe = teams[leftteam].pe - 1;
+                        teams[rightteam].pe = teams[rightteam].pe - 1;
+                        teams[rightteam].pg = teams[rightteam].pg + 1;
+                        teams[leftteam].pp = teams[leftteam].pp + 1;
+                    }
+                } else {
+                    teams[rightteam].pg = teams[rightteam].pg + 1;
+                    teams[leftteam].pp = teams[leftteam].pp + 1;
+                }
+                document.getElementById("cr"+table+i).classList.add("winner");
+                document.getElementById("cl"+table+i).classList.remove("winner");
+            } else if (leftresult == rightresult) {
+                if (leftresult == undefined & rightresult == undefined) {
+                    teams[leftteam].pp = teams[leftteam].pp + 1;
+                    teams[rightteam].pp = teams[rightteam].pp + 1;
+                } else if (leftresult != undefined & rightresult != undefined) {
+                    teams[leftteam].pe = teams[leftteam].pe + 1;
+                    teams[rightteam].pe = teams[rightteam].pe + 1;
+                    document.getElementById("cr"+table+i).classList.add("winner");
+                    document.getElementById("cl"+table+i).classList.add("winner");
+                }
+            } else if (leftresult == undefined & rightresult == 0) {
                 teams[rightteam].pg = teams[rightteam].pg + 1;
                 teams[leftteam].pp = teams[leftteam].pp + 1;
                 document.getElementById("cr"+table+i).classList.add("winner");
-            } else if (leftresult == rightresult) {
-                teams[leftteam].pe = teams[leftteam].pe + 1;
-                teams[rightteam].pe = teams[rightteam].pe + 1;
-            } else if (leftresult == NaN || rightresult == NaN) {
-                
+            } else if (leftresult == 0 & rightresult == undefined) {
+                teams[leftteam].pg = teams[leftteam].pg + 1;
+                teams[rightteam].pp = teams[rightteam].pp + 1;
+                document.getElementById("cl"+table+i).classList.add("winner");
             }
-            teams[leftteam].gf = teams[leftteam].gf + leftresult;
-            teams[rightteam].gf = teams[rightteam].gf + rightresult;
-            teams[leftteam].gc = teams[leftteam].gc + rightresult;
-            teams[rightteam].gc = teams[rightteam].gc + leftresult;
             
-            document.getElementById("rl"+table+i).innerHTML = leftresult;
-            document.getElementById("rr"+table+i).innerHTML = rightresult;
+            
+            if (rightresult == undefined) {
+                document.getElementById("rr"+table+i).innerHTML = "W";
+                rightresult = 0;
+                pushr = '';
+            } else {
+                document.getElementById("rr"+table+i).innerHTML = rightresult;
+                pushr = rightresult;
+            }
+            if (leftresult == undefined) {
+                document.getElementById("rl"+table+i).innerHTML = "W";
+                leftresult = 0;
+                pushl = '';
+            } else {
+                document.getElementById("rl"+table+i).innerHTML = leftresult;
+                pushl = leftresult;
+            }
+            
+            if (change == true) {
+                resultsT[posireal].rA = pushl;
+                resultsT[posireal].rB = pushr;
+            } else {
+                result = new resultsARR(table,i,teams[leftteam].number,teams[rightteam].number,pushl,pushr);
+                resultsT.push(result);
+            }
+
+            if (change == true) {
+                teams[leftteam].gf = teams[leftteam].gf+(resultsT[posireal].rA-leftresult);
+                teams[rightteam].gf = teams[rightteam].gf+(resultsT[posireal].rB-rightresult);
+                teams[leftteam].gc = teams[leftteam].gc+(resultsT[posireal].rB-rightresult);
+                teams[rightteam].gc = teams[rightteam].gc+(resultsT[posireal].rA-leftresult);
+            } else {
+                teams[leftteam].gf = teams[leftteam].gf+leftresult;
+                teams[rightteam].gf = teams[rightteam].gf+rightresult;
+                teams[leftteam].gc = teams[leftteam].gc+rightresult;
+                teams[rightteam].gc = teams[rightteam].gc+leftresult;
+            }
         }
     }
+    change = false;
     for (let i = 0; i < neq; i++) {
         teams[i].pts = (teams[i].pg*3)+teams[i].pe;
     }

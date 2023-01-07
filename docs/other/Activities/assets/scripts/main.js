@@ -9,8 +9,9 @@ const fP1time = [2010,2020,2200,2300,2359];
 const t = fAtime.length-1;
 
 function currentTime() {
-    ct = moment().format('h:mm:ss A');
-    $('#digitalTime').html(ct);
+    ct = moment().format('HH:mm:ss');
+    cd = moment().format('DD/MM/YYYY')
+    $('#digitalTime').html(ct+' - '+cd+' - SABANETA, ANTIOQUIA');
 
 }
 
