@@ -2,43 +2,62 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	transition: all 1s ease-in-out;
+	transition: none;
 }
 
 .notification {
+	text-align: center;
 	display: block;
-	position: absolute;
-	top: -100%;
-	left: 0;
-	right: 0;
-	margin: 0 auto !important;
-	width: 90%;
-	z-index: 1;
-}
-.blocked2 {
-	display: block;
-	position: absolute;
-	top: -100%;
-	left: 0;
-	right: 0;
-	margin: 0 auto !important;
-	width: 90%;
-	z-index: 1;
-}
-#blocked, #savedM, #errorM {
-	font-size: 60px;
-}
-
-.notification--active {
-	top: 50px;
 	position: fixed;
+	top: -100%;
+	left: 0;
+	right: 0;
+	margin: 0 auto !important;
+	width: 90%;
+	height: 100vh;
+	z-index: 1;
+	transition: all 0.1s ease-in-out;
+}
+#picture {
+	width: 100%;
+}
+.notification--active {
+	top: 0;
 	z-index: 4;
 }
-
+#game {
+	width: 100%;
+	text-align: center;
+}
+#next {
+	font-size: 200%;
+}
+.main {
+	font-size: 150%;
+	overflow: hidden;
+}
+table {
+	width: 100%;
+}
 tr{
-	border: 1px solid #000;
+	border: 2px solid #000;
 }
 td {
-	font-size: 300%;
 	padding: 0.5rem;
+}
+
+.Amarillo {
+	background-color: yellow;
+}
+.Azul {
+	background-color: blue;
+	color: #fff;
+}
+.Rojo {
+	background-color: red;
+	color: #fff;
+}
+.Verde {
+	background-color: green;
+	color: #fff;
 }

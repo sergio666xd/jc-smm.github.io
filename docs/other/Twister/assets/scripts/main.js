@@ -1,46 +1,104 @@
+testmode = false;
+color = undefined;
 partT = ["Mano","Pie"];
-sideT = ["Izquierda", "Derecha"];
+sideT = ["left", "right"];
 colorsT = ["Amarillo","Azul","Rojo","Verde"];
+colorT = [0,0,0,0];
+stepCT = [];
+stepCT.length = 4;
+stepTurn = [0,0,0,0];
+stepTurn.length = 4;
+pushactive = false;
+let push;
+let step;
 
 loading = '<img src="./assets/img/loading.gif" alt="•••">';
-
-controlBtns = '<button class="btn btn-primary mt-3" id="change"><i class="fas fa-exchange-alt"></i> Cambiar sentido</button><button class="btn btn-success mt-3" id="next"><span id="left"></span> <span id="text"> Siguiente </span> <span id="right"><i class="fas fa-arrow-right"></i></span></button><button class="btn btn-danger mt-3" id="ban"><i class="fas fa-ban"></i> Bloqueo</button>';
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-function notification(content,type,time) {
+function notification(testlog,content,img,type,time) {
     if (time == "" || time == undefined) {
         setTime = 3000;
     } else {
-        setTime = time*1000
+        setTime = time*1000;
     }
-    tipoNot = "alert-"+type;
-    $('.notification').addClass(tipoNot);
-    document.querySelector("#notification").innerHTML = '<h3>'+content+'</h3>';
-	document.querySelector(".notification").classList.add("notification--active");
-	setTimeout(() => {
-		document.querySelector(".notification").classList.remove("notification--active");
+    if (pushactive == true) {
+        clearTimeout(push);
+        $(".notification").removeClass("notification--active");
         $('#notification').removeClass(tipoNot);
         tipoNot = "";
-        document.querySelector("#notification").innerHTML = "";
-	}, setTime);
+        pushactive = false;
+        if (testmode == true) {
+            console.log("---Notificación reemplazada");
+        }
+    } else {
+        if (testmode == true) {
+            console.log("--Función notification() iniciada");
+        }
+    }
+    tipoNot = "alert-"+type;
+    pushactive = true;
+    $('.notification').addClass(tipoNot);
+    if (content != undefined) {
+        document.querySelector("#notification").innerHTML = '<h1>'+content+'</h1>';
+    }
+    if (img != undefined) {
+        document.querySelector("#notification").innerHTML += "<br>"+img;
+    }
+    $(".notification").addClass("notification--active");
+    push = setTimeout(() => {
+            $(".notification").removeClass("notification--active");
+            $('#notification').removeClass(tipoNot);
+            pushactive = false;
+            if (testmode == true) {
+                console.log("--Función notification() terminada");
+            }
+        }, setTime);
+    return push;
 }
 
 $(document).ready(() => {
-    document.querySelector("#game").innerHTML = loading;
+    clickToHide()
+    if (testmode == false) {
+        document.querySelector("#game").innerHTML = loading;
+        setTimeout(() => {
+            $('#game').load('./assets/game/1select.html')
+        }, 1980);
+    } else if (testmode == true) {
+        $('#game').load('./assets/game/play.html')
+        console.log("Modo de pruebas activado");
+        notification(true,"Modo de Pruebas",undefined,"warning",2);
+    }
 
-    setTimeout(() => {
-        $('#game').load('./assets/game/1select.html')
-    }, 1980);
 
     $("body").addClass("main");
-	$("div").delegate("button", "click", function () {
-        viewmode = $(this).attr('id');
-        if (viewmode == "landscape" || viewmode == "portrait") {
-            notification(viewmode,"info",2);
+	$("div").delegate("button", "click", function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        button = $(this).attr('id');
+        if (button == "landscape" || button == "portrait") {
+            notification(true,button,undefined,"info",2);
             $('#game').load('./assets/game/play.html');
+        }
+        if (testmode == true) {
+            console.log("Botón: "+button);
         }
 	});
 });
+
+function clickToHide() {
+    $("#notification").click(() => {
+        clearTimeout(push);
+        $(".notification").removeClass("notification--active");
+        $('#notification').removeClass(tipoNot);
+        tipoNot = "";
+        document.querySelector("#notification").innerHTML = "";
+        pushactive = false;
+        if (testmode == true) {
+            console.log("--Función notification() terminada por clickToHide()");
+        }
+    });
+}
