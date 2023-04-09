@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=480, initial-scale=1.0">
+	<title>Calculator</title>
+	<link href="/npm/bootstrap-5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/npm/icons-1.5.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="./assets/styles/main.css">
+	<script src="/npm/jquery-3.6.1/dist/jquery.js"></script>
+	<script src="/npm/fontawesome-free-6.2.0/js/all.js" data-auto-replace-svg></script>
+	<!-- <link rel="shortcut icon" href="./assets/img/uno.png" type="image/x-icon"> -->
+</head>
+<body>
+    <div id="main">
+        <div class="head">
+            <h1>CALCULATOR</h1>
+            <div class="history">
+                <h2>Historial</h2>
+                <div id="hContent">
+                    <span>aaaaaaaaaaaa</span>
+                    <span>aaaaaaaaaaaa</span>
+                    <span>aaaaaaaaaaaa</span>
+                    <span>aaaaaaaaaaaa</span>
+                    <span>aaaaaaaaaaaa</span>
+                    <span>aaaaaaaaaaaa</span>
+                    <span>aaaaaaaaaaaa</span>
+                    <span>aaaaaaaaaaaa</span>
+                    <span>aaaaaaaaaaaa</span>
+                    <span>aaaaaaaaaaaa5</span>
+                </div>
+            </div>
+        </div>
+        <div class="calculator">
+            <div class="display">
+                <div class="lcsS">
+                    <span id="topLCD"></span>
+                </div>
+                <div class="lcsB">
+                    <span id="bottomLCD">0</span>
+                </div>
+            </div>
+            <nav class="controls" id="ctrlBtns">
+                <input id="b1" type="button" class="ctrlButton" value="B">
+                <input id="b2" type="button" class="ctrlButton" value="B">
+                <input id="CE" type="button" class="ctrlButton" value="CE">
+                <input id="C" type="button" class="ctrlButton" value="C">
+                <button id="del" class="ctrlButton"><span><i class="bi bi-backspace"></i></span></button>
+                <input id="b6" type="button" class="ctrlButton" value="B">
+                <input id="b7" type="button" class="ctrlButton" value="B">
+                <input id="b8" type="button" class="ctrlButton" value="B">
+                <input id="b9" type="button" class="ctrlButton" value="B">
+                <input id="div" type="button" class="ctrlButton sim" value="&div;">
+                <input id="b11" type="button" class="ctrlButton" value="B">
+                <input id="7" type="button" class="ctrlButton num" value="7">
+                <input id="8" type="button" class="ctrlButton num" value="8">
+                <input id="9" type="button" class="ctrlButton num" value="9">
+                <input id="mul" type="button" class="ctrlButton sim" value="x">
+                <input id="b16" type="button" class="ctrlButton" value="B">
+                <input id="4" type="button" class="ctrlButton num" value="4">
+                <input id="5" type="button" class="ctrlButton num" value="5">
+                <input id="6" type="button" class="ctrlButton num" value="6">
+                <input id="min" type="button" class="ctrlButton sim" value="&minus;">
+                <input id="b21" type="button" class="ctrlButton" value="B">
+                <input id="1" type="button" class="ctrlButton num" value="1">
+                <input id="2" type="button" class="ctrlButton num" value="2">
+                <input id="3" type="button" class="ctrlButton num" value="3">
+                <input id="mor" type="button" class="ctrlButton sim" value="+">
+                <input id="b26" type="button" class="ctrlButton" value="B">
+                <input id="b27" type="button" class="ctrlButton" value="B">
+                <input id="0" type="button" class="ctrlButton num" value="0">
+                <input id="dec" type="button" class="ctrlButton" value=".">
+                <input id="res" type="button" class="ctrlButton" value="=">
+            </nav>
+        </div>
+    </div>
+
+    <script src="./assets/scripts/main.js"></script>
+	<script src="/npm/bootstrap-5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/npm/core-2.11.6/dist/umd/popper.min.js"></script>
+	<script src="/npm/bootstrap-5.2.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

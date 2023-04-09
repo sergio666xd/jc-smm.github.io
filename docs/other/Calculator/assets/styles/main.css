@@ -1,0 +1,102 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	/* transition: all 1s ease-in-out; */
+}
+
+#main {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+	border: 1px solid;
+	border-radius: 25px;
+	width: 80%;
+	height: 100vh;
+	margin: 0 auto;
+	padding: 2rem;
+}
+.head {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 35%;
+	width: 100%;
+}
+.history {
+	border: 1px solid;
+	border-radius: 10px;
+	width: 100%;
+	height: 9rem;
+	padding: 1.5rem .3rem .7rem 1.5rem;
+}
+.history h2 {
+	position: absolute;
+	text-shadow: 0 0 .5rem #fff;
+}
+.history div#hContent {
+	text-align: right;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	overflow-y: scroll;
+	display: flex;
+	flex-direction: column;
+}
+.calculator {
+	border: 1px solid;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	height: 65%;
+	width: 100%;
+	padding: .6rem;
+	gap: .5rem;
+}
+.display {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid;
+	border-radius: 10px;
+	height: 30%;
+	z-index: 2;
+	background-color: #fff;
+}
+.display div {
+	display: flex;
+	justify-content: flex-end;
+	align-items: end;
+	width: 100%;
+	height: 50%;
+}
+.lcsB {
+	font-size: 200%;
+}
+.controls {
+	width: 100%;
+	height: 70%;
+	display: inline-grid;
+	grid-template-columns: auto auto auto auto auto;
+	gap: .5rem;
+	z-index: 1;
+	overflow: hidden;
+}
+.controls .ctrlButton {
+	background-color: #ccc;
+	border: 1px solid #000;
+	border-radius: 10px;
+}
+.ctrlButton.num {
+	background-color: #fff;
+}
+.c:hover {
+	box-shadow: 0 0 10rem #000;
+	text-shadow: 0 0 .5rem #000;
+	background-color: #fff;
+}
+.ctrlButton:active {
+	box-shadow: 0 0 10rem #000;
+	text-shadow: 0 0 .5rem #fff;
+	background-color: #ccc;
+}
